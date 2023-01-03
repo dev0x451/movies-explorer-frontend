@@ -1,0 +1,15 @@
+.hero {
+  width: 100%;
+  min-height: 664px;
+  background-color: #073042;
+}
+
+.hero__title {
+  color: #fff;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+}
