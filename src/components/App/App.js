@@ -1,15 +1,24 @@
-import Preloader from "../Preloader/Preloader"
-import Hero from "../Hero/Hero"
-import "./App.css"
+import { Route, Switch } from "react-router-dom"
 
-console.log((false && true) || false || (true && false))
+import Main from "../Main/Main"
+import Login from "../Login/Login"
+import Register from "../Register/Register"
+
+import "./App.css"
 
 function App() {
   return (
-    <div className="app-container">
-      <Hero />
-      <Preloader />
-    </div>
+    <>
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+      </Switch>
+      <Main />
+    </>
   )
 }
 

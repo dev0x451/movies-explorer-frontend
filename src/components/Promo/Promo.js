@@ -1,6 +1,6 @@
-import "./Hero.css"
+import "./Promo.css"
 
-function Hero() {
+function Promo() {
   return (
     <div className="hero">
       <h1 className="hero__title">
@@ -9,5 +9,4 @@ function Hero() {
     </div>
   )
 }
-
-export default Hero
+export default Promo

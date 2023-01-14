@@ -2,6 +2,9 @@
   width: 100%;
   min-height: 664px;
   background-color: #073042;
+  padding: 0 70px;
+
+  margin: 0;
 }
 
 .hero__title {
@@ -12,4 +15,5 @@
   line-height: 58px;
   text-align: center;
   letter-spacing: -0.04em;
+  margin: 0;
 }
