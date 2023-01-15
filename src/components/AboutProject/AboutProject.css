@@ -1,0 +1,73 @@
+.aboutproject {
+  background-color: #202020;
+  padding: 92px 70px 0;
+  min-height: 608px;
+}
+
+.aboutproject__diploma {
+  margin: 53px 0 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.03fr 0.96fr;
+}
+
+.aboutproject__diploma-text {
+}
+
+.aboutproject__diploma-text_header {
+  color: #fff;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+.aboutproject__diploma-text_description {
+  color: #fff;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.aboutproject__diploma-stages {
+  margin: 98px 0 0;
+  width: 100%;
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.aboutproject__diploma-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutproject__diploma-stage_green {
+  background-color: #3ddc84;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+}
+
+.aboutproject__diploma-stage_gray {
+  background-color: #303030;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #fff;
+}
+
+.aboutproject__diploma-stage_transparent {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8b8b8b;
+}

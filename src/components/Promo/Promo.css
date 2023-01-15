@@ -1,19 +1,52 @@
-.hero {
-  width: 100%;
-  min-height: 664px;
+.promo {
   background-color: #073042;
-  padding: 0 70px;
-
+  padding: 75px 70px 0;
+  min-height: 574px;
+}
+.promo__container {
+  width: 100%;
   margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.hero__title {
+.promo__title {
   color: #fff;
   font-family: "Inter";
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
-  text-align: center;
-  letter-spacing: -0.04em;
+  max-width: 640px;
   margin: 0;
+}
+
+.promo__subtitle {
+  color: #fff;
+  opacity: 0.5;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 36px 0 0;
+  max-width: 310px;
+}
+
+.promo__learn-more-button {
+  background-color: transparent;
+  border: 1px solid;
+  border-color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  width: 129px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  margin: 84px 0 0;
 }
