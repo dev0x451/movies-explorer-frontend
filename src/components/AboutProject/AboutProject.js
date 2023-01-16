@@ -3,9 +3,9 @@ import HeadLine from "../HeadLine/HeadLine"
 
 function AboutProject() {
   return (
-    <div className="aboutproject">
+    <section className="aboutproject">
       <HeadLine text="О проекте" />
-      <section className="aboutproject__diploma">
+      <div className="aboutproject__diploma">
         <div className="aboutproject__diploma-text">
           <h3 className="aboutproject__diploma-text_header">
             Дипломный проект включал 5 этапов
@@ -24,7 +24,7 @@ function AboutProject() {
             соблюдать,&nbsp;чтобы успешно защититься.
           </p>
         </div>
-      </section>
+      </div>
       <div className="aboutproject__diploma-stages">
         <div className="aboutproject__diploma-stage aboutproject__diploma-stage_green">
           1 неделя
@@ -39,7 +39,7 @@ function AboutProject() {
           Front-end
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

@@ -1,0 +1,29 @@
+.portfoliolink {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #424242 solid;
+  height: 70px;
+  margin: 20px 0 0;
+}
+
+.portfoliolink__text {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.portfoliolink__link {
+  color: #fff;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 60px;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}

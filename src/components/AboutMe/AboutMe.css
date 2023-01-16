@@ -1,0 +1,59 @@
+.aboutme {
+  min-height: 630px;
+  background-color: #202020;
+  padding: 92px 70px 0;
+}
+
+.aboutme__contatiner {
+  margin: 66px 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutme__text {
+  font-family: "Inter";
+  color: #fff;
+  max-width: 600px;
+}
+
+.aboutme__text-title {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.aboutme__text-subtitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 18px 0 0;
+}
+
+.aboutme__text-description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 26px 0 0;
+}
+
+.aboutme__text-github {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 97px 0 0;
+  text-decoration: none;
+  display: block;
+}
+
+.aboutme__text-github:visited {
+  color: #fff;
+}
+
+.aboutme__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+}

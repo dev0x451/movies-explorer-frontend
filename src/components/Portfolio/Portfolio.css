@@ -1,0 +1,19 @@
+.portfolio {
+  padding: 25px 70px 0;
+  min-height: 528px;
+  background-color: #202020;
+}
+
+.portfolio__title {
+  margin: 0;
+
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #8b8b8b;
+}
+
+.portfolio__links {
+  margin: 49px 0 0;
+}

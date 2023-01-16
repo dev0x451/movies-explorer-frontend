@@ -1,8 +1,12 @@
 import "./Main.css"
 import Header from "../Header/Header"
+import NavLoginRegister from "../NavLoginRegister/NavLoginRegister"
 import Promo from "../Promo/Promo"
 import AboutProject from "../AboutProject/AboutProject"
-import NavLoginRegister from "../NavLoginRegister/NavLoginRegister"
+import Techs from "../Techs/Techs"
+import AboutMe from "../AboutMe/AboutMe"
+import Portfolio from "../Portfolio/Portfolio"
+import Footer from "../Footer/Footer"
 
 function Main() {
   return (
@@ -11,9 +15,9 @@ function Main() {
       <Promo />
       <AboutProject />
       <Techs />
-      {/* <AboutMe />
+      <AboutMe />
       <Portfolio />
-      <Footer /> */}
+      <Footer />
     </main>
   )
 }
