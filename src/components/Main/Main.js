@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer"
 function Main() {
   return (
     <main className="main">
-      <Header navigation={<NavLoginRegister />} />
+      <Header navigation={<NavLoginRegister />} bgcolor="#073042" />
       <Promo />
       <AboutProject />
       <Techs />

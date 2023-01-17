@@ -1,0 +1,63 @@
+.nav-movies-account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 381px;
+}
+
+.nav-movies-account__films {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px 0 0;
+}
+
+.nav-movies-account__films_bold {
+  font-weight: 500;
+}
+
+.nav-movies-account__films:visited {
+  color: #fff;
+}
+
+.nav-movies-account__account-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  width: 100px;
+}
+
+.nav-movies-account__account-container:visited {
+  color: #fff;
+}
+
+.nav-movies-account__account-text {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #fff;
+}
+
+.nav-movies-account__account-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 30px;
+  background-color: #313131;
+  border-radius: 4px;
+}
+
+.nav-movies-account__account-icon {
+  width: 12px;
+  height: 14px;
+  background-image: url("../../images/account-icon.svg");
+  background-position: center;
+  background-repeat: none;
+}
