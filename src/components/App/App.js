@@ -6,6 +6,7 @@ import SavedMovies from "../SavedMovies/SavedMovies"
 import NotFoundPage from "../NotFoundPage/NotFoundPage"
 import Login from "../Login/Login"
 import Register from "../Register/Register"
+import Profile from "../Profile/Profile"
 
 import "./App.css"
 
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <Register />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
         <Route exact path="/">
           <Main />
