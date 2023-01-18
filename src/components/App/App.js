@@ -1,8 +1,9 @@
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 
 import Main from "../Main/Main"
 import Movies from "../Movies/Movies"
 import SavedMovies from "../SavedMovies/SavedMovies"
+import NotFoundPage from "../NotFoundPage/NotFoundPage"
 import Login from "../Login/Login"
 import Register from "../Register/Register"
 
@@ -12,10 +13,10 @@ function App() {
   return (
     <>
       <Switch>
-        <Route path="/login">
+        <Route path="/signin">
           <Login />
         </Route>
-        <Route path="/register">
+        <Route path="/signup">
           <Register />
         </Route>
         <Route exact path="/">
@@ -24,8 +25,14 @@ function App() {
         <Route path="/movies">
           <Movies />
         </Route>
-        <Route path="/savedmovies">
+        <Route path="/saved-movies">
           <SavedMovies />
+        </Route>
+        <Route path="/notfound">
+          <NotFoundPage />
+        </Route>
+        <Route path="*">
+          <Redirect to="/notfound" />
         </Route>
       </Switch>
     </>

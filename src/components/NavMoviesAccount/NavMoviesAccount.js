@@ -11,11 +11,11 @@ function NavMoviesAccount() {
         >
           Фильмы
         </Link>
-        <Link className="nav-movies-account__films" to="/movies">
+        <Link className="nav-movies-account__films" to="/saved-movies">
           Сохраненные фильмы
         </Link>
       </div>
-      <Link className="nav-movies-account__account-container" to="/">
+      <Link className="nav-movies-account__account-container" to="/profile">
         <div className="nav-movies-account__account-text">Аккаунт</div>
         <div className="nav-movies-account__account-icon-container">
           <div className="nav-movies-account__account-icon"></div>
