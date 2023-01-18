@@ -1,0 +1,29 @@
+.movie-save-button {
+  width: 100px;
+  height: 29px;
+  background-color: #313131;
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 11px;
+  color: #fff;
+  margin: 14px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-save-button_saved {
+  background-color: #ee3465;
+}
+
+.movie-save-button__saved-icon {
+  background-image: url("../../images/save-button-checked.svg");
+  background-size: contain;
+  width: 8px;
+  height: 6px;
+}
