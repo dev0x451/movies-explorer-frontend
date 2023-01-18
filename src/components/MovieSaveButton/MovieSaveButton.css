@@ -27,3 +27,14 @@
   width: 8px;
   height: 6px;
 }
+
+.movie-save-button_remove {
+  background-color: #313131;
+}
+
+.movie-save-button__remove-icon {
+  background-image: url("../../images/save-button-remove.svg");
+  background-size: contain;
+  width: 7px;
+  height: 6px;
+}

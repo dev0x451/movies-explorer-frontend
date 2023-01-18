@@ -1,0 +1,11 @@
+.saved-movies {
+  margin: 0 auto 0;
+  max-width: 1280px;
+  width: 100%;
+  background-color: #202020;
+}
+
+.saved-movies__spacer {
+  width: 100%;
+  height: 230px;
+}

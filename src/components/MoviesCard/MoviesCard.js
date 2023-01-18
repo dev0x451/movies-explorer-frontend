@@ -1,7 +1,7 @@
 import "./MoviesCard.css"
 import MovieSaveButton from "../MovieSaveButton/MovieSaveButton"
 
-function MoviesCard({ title, duration, poster, isSaved }) {
+function MoviesCard({ title, duration, poster, savedState }) {
   return (
     <>
       <div className="movies-card">
@@ -11,7 +11,7 @@ function MoviesCard({ title, duration, poster, isSaved }) {
         </div>
         <img className="movies-card__poster" src={poster} alt="" />
         <div className="movie-save-button-container">
-          <MovieSaveButton isSaved={isSaved} />
+          <MovieSaveButton savedState={savedState} />
         </div>
       </div>
     </>
