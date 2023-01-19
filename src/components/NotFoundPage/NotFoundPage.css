@@ -23,6 +23,13 @@
   color: #fff;
 }
 
+@media screen and (max-width: 470px) {
+  .notfoundpage__heading {
+    font-size: 80px;
+    line-height: 97px;
+  }
+}
+
 .notfoundpage__subtitle {
   margin: 0;
   padding-top: 5px;
@@ -32,6 +39,13 @@
   font-size: 16px;
   line-height: 19px;
   color: #fff;
+}
+
+@media screen and (max-width: 470px) {
+  .notfoundpage__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
 .notfoundpage__backbutton {
@@ -44,4 +58,11 @@
   font-size: 14px;
   line-height: 17px;
   color: #4285f4;
+}
+
+@media screen and (max-width: 470px) {
+  .notfoundpage__backbutton {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
