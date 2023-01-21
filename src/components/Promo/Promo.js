@@ -6,19 +6,20 @@ function Promo() {
   return (
     <div className="promo">
       <div className="promo__container">
-        <div className="promo__text">
+        <div className="promo__text-content">
           <h1 className="promo__title">
             Учебный проект студента факультета Веб&#8209;разработки.
           </h1>
           <p className="promo__subtitle">
             Листайте ниже, чтобы узнать больше про этот проект и его создателя.
           </p>
+          <Link to="#about" className="promo__learn-more-button">
+            Узнать больше
+          </Link>
         </div>
-        <img src={webLogo} alt="" />
+
+        <img className="promo__logo" src={webLogo} alt="" />
       </div>
-      <Link to="#about" className="promo__learn-more-button">
-        Узнать больше
-      </Link>
     </div>
   )
 }

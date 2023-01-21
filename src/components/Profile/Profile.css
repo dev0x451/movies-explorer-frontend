@@ -10,6 +10,12 @@
   align-items: center;
 }
 
+@media screen and (max-width: 980px) {
+  .profile {
+    min-height: 1024px;
+  }
+}
+
 .profile__heading {
   margin: 74px 0 0;
   font-family: "Inter";
@@ -19,6 +25,12 @@
   color: #fff;
 }
 
+@media screen and (max-width: 980px) {
+  .profile__heading {
+    margin: 236px 0 0;
+  }
+}
+
 .profile__info-container {
   margin: 110px 0 0;
   font-family: "Inter";
@@ -26,6 +38,12 @@
   font-size: 11px;
   line-height: 13px;
   color: #fff;
+}
+
+@media screen and (max-width: 980px) {
+  .profile__info-container {
+    margin: 82px 0 0;
+  }
 }
 
 .profile__info-line {
@@ -48,6 +66,12 @@
   line-height: 16px;
   color: #fff;
   text-decoration: none;
+}
+
+@media screen and (max-width: 980px) {
+  .profile__edit-link {
+    margin: 196px 0 0;
+  }
 }
 
 .profile__edit-link:visited {

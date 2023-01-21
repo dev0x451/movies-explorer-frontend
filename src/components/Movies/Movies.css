@@ -26,3 +26,9 @@
 
   color: #fff;
 }
+
+@media screen and (max-width: 980px) {
+  .movies__loadmore-btn {
+    margin: 82px auto 115px;
+  }
+}

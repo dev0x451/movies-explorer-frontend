@@ -9,11 +9,23 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 980px) {
+  .register {
+    min-height: 1024px;
+  }
+}
+
 .register__container {
   width: 396px;
   margin: 70px 0 0;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 980px) {
+  .register__container {
+    margin: 232px 0 0;
+  }
 }
 
 @media screen and (max-width: 470px) {

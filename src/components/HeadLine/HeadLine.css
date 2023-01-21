@@ -12,3 +12,10 @@
   letter-spacing: -0.04em;
   color: #fff;
 }
+
+@media screen and (max-width: 470px) {
+  .headline__text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

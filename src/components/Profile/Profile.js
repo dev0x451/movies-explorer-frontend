@@ -17,7 +17,9 @@ function Profile() {
           <span>pochta@yandex.ru</span>
         </div>
       </div>
-      <Link className="profile__edit-link">Редактировать</Link>
+      <Link className="profile__edit-link" to="/">
+        Редактировать
+      </Link>
       <Link className="profile__logout-link" to="/logout">
         Выйти из аккаунта
       </Link>

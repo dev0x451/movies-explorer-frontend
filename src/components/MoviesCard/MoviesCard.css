@@ -9,6 +9,13 @@
   border-radius: 6px;
 }
 
+@media screen and (max-width: 980px) {
+  .movies-card {
+    max-width: 342px;
+    max-height: 309px;
+  }
+}
+
 .movies-card__text-container {
   display: flex;
   justify-content: space-between;
@@ -40,6 +47,13 @@
   width: 100%;
   object-position: center;
   object-fit: cover;
+}
+
+@media screen and (max-width: 980px) {
+  .movies-card__poster {
+    max-width: 342px;
+    max-height: 190px;
+  }
 }
 
 .movie-save-button-container {

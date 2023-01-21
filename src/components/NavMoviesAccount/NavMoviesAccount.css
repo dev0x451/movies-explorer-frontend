@@ -1,11 +1,79 @@
-.nav-movies-account {
+.nav-movies-account-mobile_visible::before {
+  display: block;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #161616;
+  opacity: 0.8;
+  z-index: 2;
+  transition: opacity 0.2s ease-in;
+}
+
+.nav-movies-account-desktop {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 381px;
 }
 
-.nav-movies-account__films {
+@media screen and (max-width: 980px) {
+  .nav-movies-account-desktop {
+    display: none;
+  }
+}
+
+.nav-movies-account-mobile {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background-image: url("../../images/burger-menu.svg");
+  background-size: cover;
+}
+
+@media screen and (max-width: 980px) {
+  .nav-movies-account-mobile {
+    display: block;
+  }
+}
+
+.nav-movies-account-mobile__contatiner {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 520px;
+  height: 100vh;
+  background-color: #202020;
+  z-index: 3;
+  padding: 160px 0 92px;
+}
+
+@media screen and (max-width: 980px) {
+  .nav-movies-account-mobile__contatiner_visible {
+    display: flex;
+  }
+}
+
+.nav-movies-account-mobile__close-buttion-container {
+  position: relative;
+}
+
+.nav-movies-account-mobile__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 126px;
+  max-width: 340px;
+}
+
+.nav-movies-account__link {
   font-family: "Inter";
   font-weight: 400;
   font-size: 14px;
@@ -15,12 +83,23 @@
   margin: 0 20px 0 0;
 }
 
-.nav-movies-account__films_bold {
+.nav-movies-account__link_active {
   font-weight: 500;
 }
 
-.nav-movies-account__films:visited {
+.nav-movies-account__link:visited {
   color: #fff;
+}
+
+.nav-movies-account__link_mobile {
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0 0 5px;
+}
+
+.nav-movies-account__link_active-mobile {
+  border-bottom: 2px #fff solid;
 }
 
 .nav-movies-account__account-container {
@@ -60,4 +139,17 @@
   background-image: url("../../images/account-icon.svg");
   background-position: center;
   background-repeat: none;
+}
+
+.nav-movies-account__close-button {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../images/menu-close-button.svg");
+  position: absolute;
+  right: 24px;
+  top: 22px;
+}
+
+.nav-movies-account__close-button:hover {
+  cursor: pointer;
 }

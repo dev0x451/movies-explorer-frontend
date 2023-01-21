@@ -15,3 +15,12 @@
   letter-spacing: -0.04em;
   color: #fff;
 }
+
+@media screen and (max-width: 980px) {
+  .techbox {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

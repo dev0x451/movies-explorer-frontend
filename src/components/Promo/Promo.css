@@ -3,12 +3,68 @@
   padding: 75px 70px 0;
   min-height: 574px;
 }
+
+@media screen and (max-width: 980px) {
+  .promo {
+    min-height: 850px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .promo {
+    padding: 5px 18px 0;
+    min-height: 635px;
+  }
+}
+
 .promo__container {
   width: 100%;
   margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+@media screen and (max-width: 980px) {
+  .promo__container {
+    flex-direction: column;
+    align-items: center;
+    margin: 65px 0 0;
+  }
+}
+
+.promo__text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  order: 1;
+}
+
+@media screen and (max-width: 980px) {
+  .promo__text-content {
+    order: 3;
+    align-items: center;
+    margin: 49px 0 0;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .promo__text-content {
+    margin: 44px 0 0;
+  }
+}
+
+.promo__logo {
+  order: 2;
+  width: 310px;
+  height: 304px;
+}
+
+@media screen and (max-width: 470px) {
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+  }
 }
 
 .promo__title {
@@ -19,6 +75,23 @@
   line-height: 58px;
   max-width: 640px;
   margin: 0;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 980px) {
+  .promo__title {
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .promo__title {
+    font-size: 30px;
+    line-height: 38px;
+    text-align: center;
+  }
 }
 
 .promo__subtitle {
@@ -32,7 +105,22 @@
   max-width: 310px;
 }
 
+@media screen and (max-width: 980px) {
+  .promo__subtitle {
+    text-align: center;
+    max-width: 260px;
+    margin: 22px 0 0;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .promo__subtitle {
+    margin: 24px 0 0;
+  }
+}
+
 .promo__learn-more-button {
+  margin: 146px 0 0;
   background-color: transparent;
   border: 1px solid;
   border-color: rgba(255, 255, 255, 0.6);
@@ -48,5 +136,16 @@
   font-size: 12px;
   line-height: 16px;
   text-decoration: none;
-  margin: 84px 0 0;
+}
+
+@media screen and (max-width: 980px) {
+  .promo__learn-more-button {
+    margin: 91px 0 0;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .promo__learn-more-button {
+    margin: 80px 0 0;
+  }
 }

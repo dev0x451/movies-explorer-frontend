@@ -5,10 +5,10 @@ import MoviesSearch from "../MoviesSearch/MoviesSearch"
 import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import MoviesCard from "../MoviesCard/MoviesCard"
 import Footer from "../Footer/Footer"
-function SavedMovies() {
+function SavedMovies({ url }) {
   return (
     <div className="saved-movies">
-      <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
+      <Header navigation={<NavMoviesAccount url={url} />} bgcolor="#202020" />
       <MoviesSearch />
       <MoviesCardList>
         <MoviesCard

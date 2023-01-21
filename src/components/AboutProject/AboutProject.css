@@ -4,15 +4,34 @@
   min-height: 608px;
 }
 
-.aboutproject__diploma {
-  margin: 53px 0 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1.03fr 0.96fr;
+@media screen and (max-width: 980px) {
+  .aboutproject {
+    padding: 72px 50px 0;
+    min-height: 585px;
+  }
 }
 
-/* .aboutproject__diploma-text {
-} */
+@media screen and (max-width: 470px) {
+  .aboutproject {
+    padding: 56px 18px 0;
+    min-height: 642px;
+  }
+}
+
+.aboutproject__diploma {
+  margin: 50px 0 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 53px;
+}
+
+@media screen and (max-width: 980px) {
+  .aboutproject__diploma {
+    margin: 50px 0 0;
+    gap: 38px;
+  }
+}
 
 .aboutproject__diploma-text_header {
   color: #fff;
@@ -23,21 +42,59 @@
   letter-spacing: -0.04em;
 }
 
+@media screen and (max-width: 470px) {
+  .aboutproject__diploma-text_header {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 11px 0 0;
+  }
+}
 .aboutproject__diploma-text_description {
   color: #fff;
   font-family: "Inter";
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  margin: 25px 0 0;
+}
+
+@media screen and (max-width: 980px) {
+  .aboutproject__diploma-text_description {
+    margin: 21px 0 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .aboutproject__diploma-text_description {
+    margin: 15px 0 8px;
+    font-size: 11px;
+    line-height: 16px;
+  }
 }
 
 .aboutproject__diploma-stages {
-  margin: 98px 0 0;
+  margin: 113px 0 0;
   width: 100%;
   min-height: 72px;
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 1fr;
+}
+
+@media screen and (max-width: 980px) {
+  .aboutproject__diploma-stages {
+    grid-template-columns: 1.05fr 4fr;
+    margin: 96px 0 0;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .aboutproject__diploma-stages {
+    grid-template-columns: 1fr 1.8fr;
+    margin: 51px 0 0;
+  }
 }
 
 .aboutproject__diploma-stage {
@@ -55,6 +112,13 @@
   color: #000;
 }
 
+@media screen and (max-width: 470px) {
+  .aboutproject__diploma-stage_green {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
 .aboutproject__diploma-stage_gray {
   background-color: #303030;
   font-family: "Inter";
@@ -64,10 +128,24 @@
   color: #fff;
 }
 
+@media screen and (max-width: 470px) {
+  .aboutproject__diploma-stage_gray {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
 .aboutproject__diploma-stage_transparent {
   font-family: "Inter";
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   color: #8b8b8b;
+}
+
+@media screen and (max-width: 470px) {
+  .aboutproject__diploma-stage_transparent {
+    font-size: 11px;
+    line-height: 13px;
+  }
 }

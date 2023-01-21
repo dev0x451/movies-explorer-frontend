@@ -10,6 +10,12 @@
   align-items: center;
 }
 
+@media screen and (max-width: 980px) {
+  .notfoundpage {
+    min-height: 1024px;
+  }
+}
+
 .notfoundpage__text-container {
 }
 
@@ -21,6 +27,12 @@
   font-size: 140px;
   line-height: 169px;
   color: #fff;
+}
+
+@media screen and (max-width: 980px) {
+  .notfoundpage__heading {
+    padding-top: 408px;
+  }
 }
 
 @media screen and (max-width: 470px) {

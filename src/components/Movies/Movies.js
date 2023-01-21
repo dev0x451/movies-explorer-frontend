@@ -6,10 +6,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import MoviesCard from "../MoviesCard/MoviesCard"
 import Footer from "../Footer/Footer"
 import Preloader from "../Preloader/Preloader"
-function Movies() {
+function Movies({ url }) {
   return (
     <div className="movies">
-      <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
+      <Header navigation={<NavMoviesAccount url={url} />} bgcolor="#202020" />
       <MoviesSearch />
       <MoviesCardList>
         <MoviesCard
@@ -60,7 +60,7 @@ function Movies() {
           poster={require("../../images/poster_ref.png")}
           savedState="save"
         />
-        <MoviesCard
+        {/* <MoviesCard
           title="В погоне за Бенкси"
           duration="27"
           poster={require("../../images/poster_ref.png")}
@@ -83,7 +83,7 @@ function Movies() {
           duration="27"
           poster={require("../../images/poster_ref.png")}
           savedState="save"
-        />
+        /> */}
       </MoviesCardList>
       <button className="movies__loadmore-btn">Еще</button>
       <Footer />

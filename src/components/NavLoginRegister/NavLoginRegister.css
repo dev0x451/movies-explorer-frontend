@@ -5,6 +5,12 @@
   width: 183px;
 }
 
+@media screen and (max-width: 470px) {
+  .nav-login-register {
+    width: 132px;
+  }
+}
+
 .nav-login-register__login-button {
   background-color: #3ddc84;
   border-radius: 3px;
@@ -21,6 +27,15 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 470px) {
+  .nav-login-register__login-button {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+
 .nav-login-register__reg-button {
   font-family: "Inter";
   font-weight: 500;
@@ -28,4 +43,11 @@
   line-height: 16px;
   color: #fff;
   text-decoration: none;
+}
+
+@media screen and (max-width: 470px) {
+  .nav-login-register__reg-button {
+    font-size: 10px;
+    line-height: 16px;
+  }
 }
