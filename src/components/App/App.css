@@ -1,0 +1,15 @@
+.link-hover-effect {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.link-hover-effect:hover {
+  opacity: 0.7;
+}
+
+.button-hover-effect {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.button-hover-effect:hover {
+  opacity: 0.8;
+}

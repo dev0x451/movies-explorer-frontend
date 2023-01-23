@@ -37,6 +37,7 @@
 
 @media screen and (max-width: 470px) {
   .notfoundpage__heading {
+    padding-top: 330px;
     font-size: 80px;
     line-height: 97px;
   }
@@ -44,8 +45,7 @@
 
 .notfoundpage__subtitle {
   margin: 0;
-  padding-top: 5px;
-  padding-bottom: 184px;
+  padding: 5px 0 184px;
   font-family: "Inter";
   font-weight: 400;
   font-size: 16px;
@@ -55,6 +55,7 @@
 
 @media screen and (max-width: 470px) {
   .notfoundpage__subtitle {
+    padding: 9px 0 283px;
     font-size: 12px;
     line-height: 15px;
   }

@@ -1,45 +1,38 @@
 import { Link } from "react-router-dom"
 import "./Register.css"
-import logo from "../../images/logo.svg"
+import LogoLink from "../LogoLink/LogoLink"
+import SubmitButton from "../SubmitButton/SubmitButton"
+import FormInput from "../FormInput/FormInput"
 
 function Register() {
   return (
     <div className="register">
       <div className="register__container">
-        <Link to="/">
-          <img className="register__logo" src={logo} alt="" />
-        </Link>
+        <LogoLink />
         <h2 className="register__heading">Добро пожаловать!</h2>
         <form className="register__form">
-          <label className="register__form-label" htmlFor="name-input">
-            Имя
-          </label>
-          <input className="register__form-input" id="name-input"></input>
-          <label className="register__form-label" htmlFor="email-input">
-            E-mail
-          </label>
-          <input className="register__form-input" id="email-input"></input>
-          <label className="register__form-label" htmlFor="password-input">
-            Пароль
-          </label>
-          <input
-            className="register__form-input register__form-input-password_error"
-            type="password"
-            id="password-input"
-          ></input>
-          <div className="register__form-input-password_validation-message">
-            Что-то пошло не так...
+          <div className="register__form-input">
+            <FormInput label="Имя" type="text" id="name-input" />
+            <FormInput label="E-email" type="text" id="email-input" />
+            <FormInput label="Пароль" type="password" id="password-input" />
           </div>
-          <button className="register__form-submit-button">
-            Зарегистрироваться
-          </button>
-        </form>
 
+          <div className="register__form-submit-button">
+            <SubmitButton
+              title="Зарегистрироваться"
+              onSubmit={null}
+              errorMessage="При обновлении профиля произошла ошибка."
+            />
+          </div>
+        </form>
         <div className="register__bottom-text-container">
           <span className="register__bottom-text-question">
             Уже зарегистрированы?
           </span>
-          <Link className="register__bottom-text-link" to="/signin">
+          <Link
+            className="register__bottom-text-link link-hover-effect"
+            to="/signin"
+          >
             Войти
           </Link>
         </div>

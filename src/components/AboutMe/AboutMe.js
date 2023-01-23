@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import "./AboutMe.css"
+import { Link } from "react-router-dom"
 import userPic from "../../images/pic__COLOR_pic.png"
 import HeadLine from "../HeadLine/HeadLine"
 function AboutMe() {
@@ -19,7 +20,7 @@ function AboutMe() {
           </p>
           <a
             href="https://github.com"
-            className="aboutme__text-github"
+            className="aboutme__text-github link-hover-effect"
             target="_blank"
           >
             Github

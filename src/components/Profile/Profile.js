@@ -17,10 +17,10 @@ function Profile() {
           <span>pochta@yandex.ru</span>
         </div>
       </div>
-      <Link className="profile__edit-link" to="/">
+      <Link className="profile__edit-link link-hover-effect" to="/">
         Редактировать
       </Link>
-      <Link className="profile__logout-link" to="/logout">
+      <Link className="profile__logout-link link-hover-effect" to="/logout">
         Выйти из аккаунта
       </Link>
     </div>

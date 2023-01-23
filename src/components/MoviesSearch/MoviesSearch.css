@@ -12,9 +12,22 @@
   }
 }
 
+@media screen and (max-width: 470px) {
+  .movies-search {
+    margin: 61px 0 0;
+    padding: 0 14px;
+  }
+}
+
 .movies-search__form-container {
   height: 71px;
   border-bottom: 1px #424242 solid;
+}
+
+@media screen and (max-width: 470px) {
+  .movies-search__form-container {
+    height: 67px;
+  }
 }
 
 .movies-search__form {
@@ -31,12 +44,18 @@
   border: none;
   background-color: transparent;
   outline: none;
-
   font-family: "Inter";
   font-weight: 500;
   font-size: 28px;
   line-height: 34px;
   color: #fff;
+}
+
+@media screen and (max-width: 470px) {
+  .movies-search__form-input {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .movies-search__form-input::placeholder {
@@ -45,6 +64,13 @@
   font-size: 28px;
   line-height: 34px;
   color: #8b8b8b;
+}
+
+@media screen and (max-width: 470px) {
+  .movies-search__form-input::placeholder {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .movies-search__form-submitbtn {
@@ -69,7 +95,14 @@
   }
 }
 
-.movies-search__toggle-switch-icon {
+@media screen and (max-width: 470px) {
+  .movies-search__toggle-switch-container {
+    justify-content: center;
+    margin: 28px 0 0;
+  }
+}
+
+.movies-search__toggle-switch {
   background-image: url("../../images/toggle-switch-on.svg");
   width: 36px;
   height: 20px;
@@ -77,18 +110,23 @@
 }
 
 @media screen and (max-width: 980px) {
-  .movies-search__toggle-switch-icon {
+  .movies-search__toggle-switch {
     order: 3;
   }
 }
 
 .movies-search__toggle-switch-text {
-  /* margin: 0 0 0 14px; */
-
   font-family: "Inter";
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
   color: #fff;
   order: 2;
+}
+
+@media screen and (max-width: 470px) {
+  .movies-search__toggle-switch-text {
+    font-size: 11px;
+    line-height: 17px;
+  }
 }

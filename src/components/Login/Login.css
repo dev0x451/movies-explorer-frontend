@@ -36,11 +36,6 @@
   }
 }
 
-.login__logo {
-  width: 38px;
-  height: 38px;
-}
-
 .login__heading {
   margin: 36px 0 0;
   font-family: "Inter";
@@ -119,28 +114,13 @@
 }
 
 .login__form-submit-button {
-  margin: 158px 0 0;
-  width: 100%;
-  height: 45px;
-
-  background: #4285f4;
-  border-radius: 3px;
-  border: 0;
-
-  font-family: "Inter";
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-
-  color: #fff;
-  cursor: pointer;
+  margin: 124px 0 0;
+  max-width: 410px;
 }
 
 @media screen and (max-width: 470px) {
   .login__form-submit-button {
     margin: 245px 0 0;
-    font-size: 12px;
-    line-height: 15px;
   }
 }
 

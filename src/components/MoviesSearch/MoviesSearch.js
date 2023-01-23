@@ -7,10 +7,13 @@ function MoviesSearch() {
         <div className="movies-search__form-container">
           <form className="movies-search__form">
             <input className="movies-search__form-input" placeholder="Фильм" />
-            <button className="movies-search__form-submitbtn" type="submit" />
+            <button
+              className="movies-search__form-submitbtn button-hover-effect"
+              type="submit"
+            />
           </form>
           <div className="movies-search__toggle-switch-container">
-            <div className="movies-search__toggle-switch-icon"></div>
+            <div className="movies-search__toggle-switch button-hover-effect"></div>
             <div className="movies-search__toggle-switch-text">
               Короткометражки
             </div>

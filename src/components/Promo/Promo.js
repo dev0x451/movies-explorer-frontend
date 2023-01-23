@@ -1,6 +1,6 @@
 import "./Promo.css"
 import webLogo from "../../images/WEB_landing-logo.svg"
-import { Link } from "react-router-dom"
+import { HashLink as Link } from "react-router-hash-link"
 
 function Promo() {
   return (
@@ -13,7 +13,10 @@ function Promo() {
           <p className="promo__subtitle">
             Листайте ниже, чтобы узнать больше про этот проект и его создателя.
           </p>
-          <Link to="#about" className="promo__learn-more-button">
+          <Link
+            to="#aboutproject"
+            className="promo__learn-more-button link-hover-effect"
+          >
             Узнать больше
           </Link>
         </div>

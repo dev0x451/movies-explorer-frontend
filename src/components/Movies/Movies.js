@@ -6,18 +6,13 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import MoviesCard from "../MoviesCard/MoviesCard"
 import Footer from "../Footer/Footer"
 import Preloader from "../Preloader/Preloader"
-function Movies({ url }) {
+function Movies() {
   return (
     <div className="movies">
-      <Header navigation={<NavMoviesAccount url={url} />} bgcolor="#202020" />
+      <Preloader />
+      <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
       <MoviesSearch />
       <MoviesCardList>
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
         <MoviesCard
           title="В погоне за Бенкси"
           duration="27"
@@ -28,19 +23,7 @@ function Movies({ url }) {
           title="В погоне за Бенкси"
           duration="27"
           poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
+          savedState="saved"
         />
         <MoviesCard
           title="В погоне за Бенкси"
@@ -77,6 +60,24 @@ function Movies({ url }) {
           duration="27"
           poster={require("../../images/poster_ref.png")}
           savedState="save"
+        /> */}
+        {/* <MoviesCard
+          title="В погоне за Бенкси"
+          duration="27"
+          poster={require("../../images/poster_ref.png")}
+          savedState="save"
+        />
+        <MoviesCard
+          title="В погоне за Бенкси"
+          duration="27"
+          poster={require("../../images/poster_ref.png")}
+          savedState="save"
+        />
+        <MoviesCard
+          title="В погоне за Бенкси"
+          duration="27"
+          poster={require("../../images/poster_ref.png")}
+          savedState="save"
         />
         <MoviesCard
           title="В погоне за Бенкси"
@@ -87,7 +88,6 @@ function Movies({ url }) {
       </MoviesCardList>
       <button className="movies__loadmore-btn">Еще</button>
       <Footer />
-      {/* <Preloader /> */}
     </div>
   )
 }

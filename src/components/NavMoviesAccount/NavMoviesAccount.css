@@ -39,6 +39,13 @@
   }
 }
 
+@media screen and (max-width: 520px) {
+  .nav-movies-account-mobile {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .nav-movies-account-mobile__contatiner {
   display: none;
   flex-direction: column;
@@ -52,6 +59,13 @@
   background-color: #202020;
   z-index: 3;
   padding: 160px 0 92px;
+}
+
+@media screen and (max-width: 520px) {
+  .nav-movies-account-mobile__contatiner {
+    width: 320px;
+    padding: 144px 0 48px;
+  }
 }
 
 @media screen and (max-width: 980px) {
@@ -71,6 +85,12 @@
   justify-content: space-between;
   min-height: 126px;
   max-width: 340px;
+}
+
+@media screen and (max-width: 520px) {
+  .nav-movies-account-mobile__links {
+    min-height: 119px;
+  }
 }
 
 .nav-movies-account__link {
@@ -114,13 +134,13 @@
   color: #fff;
 }
 
-.nav-movies-account__account-text {
+/* .nav-movies-account__account-text {
   font-family: "Inter";
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   color: #fff;
-}
+} */
 
 .nav-movies-account__account-icon-container {
   display: flex;
@@ -148,6 +168,13 @@
   position: absolute;
   right: 24px;
   top: 22px;
+}
+
+@media screen and (max-width: 520px) {
+  .nav-movies-account__close-button {
+    right: 15px;
+    top: 12px;
+  }
 }
 
 .nav-movies-account__close-button:hover {

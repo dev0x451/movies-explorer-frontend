@@ -27,10 +27,10 @@ function App() {
           <Main />
         </Route>
         <Route path="/movies">
-          <Movies url="movies" />
+          <Movies />
         </Route>
         <Route path="/saved-movies">
-          <SavedMovies url="saved-movies" />
+          <SavedMovies />
         </Route>
         <Route path="/notfound">
           <NotFoundPage />

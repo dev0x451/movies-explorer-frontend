@@ -7,7 +7,7 @@ function NotFoundPage() {
       <h2 className="notfoundpage__heading">404</h2>
       <p className="notfoundpage__subtitle">Страница не найдена</p>
       <button
-        className="notfoundpage__backbutton"
+        className="notfoundpage__backbutton link-hover-effect"
         onClick={() => history.goBack()}
       >
         Назад

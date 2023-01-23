@@ -3,6 +3,7 @@
   max-width: 1280px;
   width: 100%;
   background-color: #202020;
+  position: relative;
 }
 
 .movies__loadmore-btn {
@@ -25,10 +26,22 @@
   justify-content: center;
 
   color: #fff;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.movies__loadmore-btn:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 980px) {
   .movies__loadmore-btn {
     margin: 82px auto 115px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .movies__loadmore-btn {
+    margin: 78px auto 117px;
+    width: 240px;
   }
 }

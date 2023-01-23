@@ -3,7 +3,7 @@ import HeadLine from "../HeadLine/HeadLine"
 
 function AboutProject() {
   return (
-    <section className="aboutproject">
+    <section id="aboutproject" className="aboutproject">
       <HeadLine text="О проекте" />
       <div className="aboutproject__diploma">
         <div className="aboutproject__diploma-text">

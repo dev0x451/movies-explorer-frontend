@@ -1,13 +1,10 @@
 import "./Header.css"
-import { Link } from "react-router-dom"
-import logo from "../../images/logo.svg"
+import LogoLink from "../LogoLink/LogoLink"
 
 function Header({ navigation, bgcolor }) {
   return (
     <header className="header-container" style={{ backgroundColor: bgcolor }}>
-      <Link to="/">
-        <img className="header__logo" src={logo} alt="" />
-      </Link>
+      <LogoLink />
       <nav>{navigation}</nav>
     </header>
   )

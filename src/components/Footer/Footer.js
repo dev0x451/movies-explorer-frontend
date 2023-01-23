@@ -11,13 +11,17 @@ function Footer() {
         <div className="footer__copyright">© 2023</div>
         <div className="footer__links-container">
           <a
-            className="footer__link"
+            className="footer__link link-hover-effect"
             target="_blank"
             href="https://praktikum.yandex.ru"
           >
             Яндекс.Практикум
           </a>
-          <a className="footer__link" target="_blank" href="https://github.com">
+          <a
+            className="footer__link link-hover-effect"
+            target="_blank"
+            href="https://github.com"
+          >
             Github
           </a>
         </div>

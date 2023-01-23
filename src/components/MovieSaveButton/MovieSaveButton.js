@@ -1,12 +1,13 @@
 import "./MovieSaveButton.css"
 
 function MovieSaveButton({ savedState }) {
-  const cssClass =
+  let cssClass = "movie-save-button button-hover-effect "
+  cssClass +=
     savedState === "saved"
-      ? "movie-save-button movie-save-button_saved"
+      ? " movie-save-button_saved"
       : savedState === "remove"
-      ? "movie-save-button movie-save-button_remove"
-      : "movie-save-button "
+      ? "movie-save-button_remove"
+      : ""
 
   return (
     <button className={cssClass}>

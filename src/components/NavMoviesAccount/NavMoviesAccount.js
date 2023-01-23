@@ -1,8 +1,9 @@
 import "./NavMoviesAccount.css"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useState } from "react"
 
-function NavMoviesAccount({ url }) {
+function NavMoviesAccount() {
   const [isOpen, setIsOpen] = useState(false)
 
   function onCloseButton(e) {
@@ -20,30 +21,39 @@ function NavMoviesAccount({ url }) {
     <div className="nav-movies-account">
       <nav className="nav-movies-account-desktop">
         <div>
-          <Link
-            className="nav-movies-account__link nav-movies-account__link_active"
+          <NavLink
+            className="nav-movies-account__link link-hover-effect"
+            activeClassName="nav-movies-account__link_active"
             to="/movies"
           >
             Фильмы
-          </Link>
-          <Link className="nav-movies-account__link" to="/saved-movies">
+          </NavLink>
+          <NavLink
+            className="nav-movies-account__link link-hover-effect"
+            activeClassName="nav-movies-account__link_active"
+            to="/saved-movies"
+          >
             Сохраненные фильмы
-          </Link>
+          </NavLink>
         </div>
-        <Link className="nav-movies-account__account-container" to="/profile">
-          <div className="nav-movies-account__account-text">Аккаунт</div>
+        <NavLink
+          className="nav-movies-account__account-container nav-movies-account__link link-hover-effect"
+          activeClassName="nav-movies-account__link_active"
+          to="/profile"
+        >
+          <div>Аккаунт</div>
           <div className="nav-movies-account__account-icon-container">
             <div className="nav-movies-account__account-icon"></div>
           </div>
-        </Link>
+        </NavLink>
       </nav>
 
       <div
         onClick={onBurgerButton}
         className={
           isOpen
-            ? "nav-movies-account-mobile nav-movies-account-mobile_visible"
-            : "nav-movies-account-mobile"
+            ? "nav-movies-account-mobile  link-hover-effect  nav-movies-account-mobile_visible"
+            : "nav-movies-account-mobile  link-hover-effect "
         }
       ></div>
 
@@ -56,45 +66,42 @@ function NavMoviesAccount({ url }) {
           }
         >
           <div className="nav-movies-account-mobile__links">
-            <Link
+            <NavLink
               onClick={onMenuClick}
-              className="nav-movies-account__link nav-movies-account__link_mobile"
+              className="nav-movies-account__link link-hover-effect nav-movies-account__link_mobile"
               to="/"
             >
               Главная
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               onClick={onMenuClick}
-              className={
-                url === "movies"
-                  ? "nav-movies-account__link nav-movies-account__link_mobile nav-movies-account__link_active-mobile"
-                  : "nav-movies-account__link nav-movies-account__link_mobile"
-              }
+              className="nav-movies-account__link link-hover-effect nav-movies-account__link_mobile"
+              activeClassName="nav-movies-account__link_active-mobile"
               to="/movies"
             >
               Фильмы
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               onClick={onMenuClick}
-              className={
-                url === "saved-movies"
-                  ? "nav-movies-account__link nav-movies-account__link_mobile nav-movies-account__link_active-mobile"
-                  : "nav-movies-account__link nav-movies-account__link_mobile"
-              }
+              className="nav-movies-account__link link-hover-effect nav-movies-account__link_mobile"
+              activeClassName="nav-movies-account__link_active-mobile"
               to="/saved-movies"
             >
               Сохраненные фильмы
-            </Link>
+            </NavLink>
           </div>
-          <Link className="nav-movies-account__account-container" to="/profile">
-            <div className="nav-movies-account__account-text">Аккаунт</div>
+          <NavLink
+            className="nav-movies-account__account-container  link-hover-effect "
+            to="/profile"
+          >
+            <div className="nav-movies-account__link">Аккаунт</div>
             <div className="nav-movies-account__account-icon-container">
               <div className="nav-movies-account__account-icon"></div>
             </div>
-          </Link>
+          </NavLink>
           <div
             onClick={onCloseButton}
-            className="nav-movies-account__close-button"
+            className="nav-movies-account__close-button  link-hover-effect"
           ></div>
         </nav>
       </div>

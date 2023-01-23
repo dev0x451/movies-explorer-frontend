@@ -5,7 +5,11 @@ function PortfolioLink({ title, link }) {
   return (
     <div className="portfoliolink">
       <div className="portfoliolink__text">{title}</div>
-      <a className="portfoliolink__link" href={link} target="_blank">
+      <a
+        className="portfoliolink__link link-hover-effect"
+        href={link}
+        target="_blank"
+      >
         ↗
       </a>
     </div>
