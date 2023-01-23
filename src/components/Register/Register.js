@@ -12,8 +12,18 @@ function Register() {
         <h2 className="register__heading">Добро пожаловать!</h2>
         <form className="register__form">
           <div className="register__form-input">
-            <FormInput label="Имя" type="text" id="name-input" />
-            <FormInput label="E-email" type="text" id="email-input" />
+            <FormInput
+              label="Имя"
+              type="text"
+              id="name-input"
+              placeholder="Виталий"
+            />
+            <FormInput
+              label="E-mail"
+              type="email"
+              id="email-input"
+              placeholder="pochta@yandex.ru"
+            />
             <FormInput label="Пароль" type="password" id="password-input" />
           </div>
 

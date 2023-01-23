@@ -1,15 +1,22 @@
 import "./FormInput.css"
 
-function FormInput({ label, type, id, validation }) {
+function FormInput({ label, type, id, placeholder }) {
   return (
-    <div>
+    <div className="forminput">
       <label className="forminput__label" htmlFor={id}>
         {label}
       </label>
-      <input type={type} className="forminput" id={id}></input>
-      <div className="register__form-input-password_validation-message">
-        Что-то пошло не так...
-      </div>
+      <input
+        type={type}
+        className="forminput__input"
+        id={id}
+        name={id}
+        placeholder={placeholder}
+        minLength="2"
+        maxLength="30"
+        required
+      ></input>
+      <div className="form-input__validation-message">Ошибка валидации</div>
     </div>
   )
 }

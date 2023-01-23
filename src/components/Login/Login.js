@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import LogoLink from "../LogoLink/LogoLink"
+import FormInput from "../FormInput/FormInput"
 import SubmitButton from "../SubmitButton/SubmitButton"
 import "./Login.css"
 
@@ -10,24 +11,16 @@ function Login() {
         <LogoLink />
         <h2 className="login__heading">Рады видеть!</h2>
         <form className="login__form">
-          <label className="login__form-label" htmlFor="email-input">
-            E-mail
-          </label>
-          <input className="login__form-input" id="email-input"></input>
-          <div className="login__form-input-password_validation-message">
-            Ошибка валидации
+          <div className="login__form-input">
+            <FormInput
+              label="E-mail"
+              type="email"
+              id="email-input"
+              placeholder="pochta@yandex.ru"
+            />
+            <FormInput label="Пароль" type="password" id="password-input" />
           </div>
-          <label className="login__form-label" htmlFor="password-input">
-            Пароль
-          </label>
-          <input
-            className="login__form-input login__form-input-password_error"
-            type="password"
-            id="password-input"
-          ></input>
-          <div className="login__form-input-password_validation-message">
-            Ошибка валидации
-          </div>
+
           <div className="login__form-submit-button">
             <SubmitButton
               title="Войти"

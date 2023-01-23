@@ -3,7 +3,7 @@ import "./SubmitButton.css"
 
 function SubmitButton({ title, onSubmit, errorMessage }) {
   return (
-    <div className="submit-button__container">
+    <>
       <APIErrorMessage message={errorMessage} />
       <button
         type="submit"
@@ -12,7 +12,7 @@ function SubmitButton({ title, onSubmit, errorMessage }) {
       >
         {title}
       </button>
-    </div>
+    </>
   )
 }
 

@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
 import "./AboutMe.css"
-import { Link } from "react-router-dom"
 import userPic from "../../images/pic__COLOR_pic.png"
 import HeadLine from "../HeadLine/HeadLine"
 function AboutMe() {
