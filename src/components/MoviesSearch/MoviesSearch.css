@@ -102,11 +102,20 @@
   }
 }
 
-.movies-search__toggle-switch {
+.movies-search__toggle-switch_on {
   background-image: url("../../images/toggle-switch-on.svg");
   width: 36px;
   height: 20px;
   order: 1;
+  cursor: pointer;
+}
+
+.movies-search__toggle-switch_off {
+  background-image: url("../../images/toggle-switch-off.svg");
+  width: 36px;
+  height: 20px;
+  order: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 980px) {

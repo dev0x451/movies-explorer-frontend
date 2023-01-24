@@ -22,7 +22,6 @@
   margin: 50px 0 0;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
   gap: 53px;
 }
 
@@ -30,6 +29,12 @@
   .aboutproject__diploma {
     margin: 50px 0 0;
     gap: 38px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .aboutproject__diploma {
+    flex-wrap: wrap;
   }
 }
 

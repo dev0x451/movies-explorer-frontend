@@ -1,6 +1,10 @@
 import "./MoviesSearch.css"
-
+import { useState } from "react"
 function MoviesSearch() {
+  const [shortFilm, setShortFilm] = useState(false)
+  function onToggleClick() {
+    setShortFilm(!shortFilm)
+  }
   return (
     <>
       <section className="movies-search">
@@ -13,7 +17,14 @@ function MoviesSearch() {
             />
           </form>
           <div className="movies-search__toggle-switch-container">
-            <div className="movies-search__toggle-switch button-hover-effect"></div>
+            <div
+              onClick={onToggleClick}
+              className={
+                shortFilm
+                  ? "movies-search__toggle-switch_on button-hover-effect"
+                  : "movies-search__toggle-switch_off button-hover-effect"
+              }
+            ></div>
             <div className="movies-search__toggle-switch-text">
               Короткометражки
             </div>
