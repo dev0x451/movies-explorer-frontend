@@ -1,7 +1,9 @@
+@use "../../global";
+
 * {
   box-sizing: border-box;
   font-family: "Inter", Arial, sans-serif;
-  color: #fff;
+  color: global.$primary-color;
 }
 
 .link-hover-effect {

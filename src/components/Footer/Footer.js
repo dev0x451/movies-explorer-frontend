@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import "./Footer.css"
+import "./Footer.scss"
 
 function Footer() {
   return (
