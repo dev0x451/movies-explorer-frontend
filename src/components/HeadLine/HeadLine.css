@@ -1,0 +1,19 @@
+.headline {
+  height: 51px;
+  width: 100%;
+  border-bottom: 1px solid;
+  border-color: #dadada;
+}
+.headline__text {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 470px) {
+  .headline__text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
