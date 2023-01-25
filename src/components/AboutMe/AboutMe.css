@@ -41,8 +41,7 @@
 }
 
 .aboutme__text {
-  font-family: "Inter";
-  color: #fff;
+  margin: 0 40px 0 0;
   max-width: 600px;
   order: 2;
 }
@@ -50,6 +49,13 @@
 @media screen and (max-width: 980px) {
   .aboutme__text {
     max-width: 364px;
+    margin: 0 30px 0 0;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .aboutme__text {
+    margin: 0;
   }
 }
 

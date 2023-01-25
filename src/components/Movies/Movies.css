@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.movies-hidden-header {
+  display: none;
+}
+
 .movies__loadmore-btn {
   margin: 57px auto 80px;
   width: 320px;
@@ -13,19 +17,14 @@
   background: transparent;
   outline: none;
   cursor: pointer;
-
   border: 1px #8b8b8b solid;
   border-radius: 5px;
-
-  font-family: "Inter";
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: #fff;
   transition: opacity 0.2s ease-in-out;
 }
 

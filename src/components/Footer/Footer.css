@@ -23,13 +23,10 @@
   margin: 0;
   border-bottom: 1px #424242 solid;
   height: 37px;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-
   text-align: center;
-
   color: #8b8b8b;
 }
 
@@ -56,11 +53,9 @@
 }
 
 .footer__copyright {
-  font-family: "Inter";
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  color: #fff;
 }
 
 @media screen and (max-width: 470px) {

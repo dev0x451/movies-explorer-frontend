@@ -18,11 +18,9 @@
 
 .profile__heading {
   margin: 74px 0 0;
-  font-family: "Inter";
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
-  color: #fff;
 }
 
 @media screen and (max-width: 980px) {
@@ -39,11 +37,9 @@
 
 .profile__info-container {
   margin: 110px 0 0;
-  font-family: "Inter";
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
-  color: #fff;
   width: 410px;
 }
 
@@ -74,11 +70,9 @@
 
 .profile__edit-link {
   margin: 206px 0 0;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  color: #fff;
   text-decoration: none;
 }
 
@@ -103,7 +97,6 @@
 .profile__logout-link {
   margin: 16px 0 0;
 
-  font-family: "Inter";
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;

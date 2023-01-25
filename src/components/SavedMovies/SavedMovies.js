@@ -12,29 +12,32 @@ function SavedMovies({ url }) {
       <Preloader />
 
       <Header navigation={<NavMoviesAccount url={url} />} bgcolor="#202020" />
-      <MoviesSearch />
-      <MoviesCardList>
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="remove"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="remove"
-        />
-        {/* <MoviesCard
+      <main>
+        <h1 className="movies-hidden-header">Сохраненные фильмы</h1>
+
+        <MoviesSearch />
+        <MoviesCardList>
+          <MoviesCard
+            title="В погоне за Бенкси"
+            duration="27"
+            poster={require("../../images/poster_ref.png")}
+            savedState="remove"
+          />
+          <MoviesCard
+            title="В погоне за Бенкси"
+            duration="27"
+            poster={require("../../images/poster_ref.png")}
+            savedState="remove"
+          />
+          {/* <MoviesCard
           title="В погоне за Бенкси"
           duration="27"
           poster={require("../../images/poster_ref.png")}
           savedState="remove"
         /> */}
-      </MoviesCardList>
-      <div className="saved-movies__spacer"></div>
-
+        </MoviesCardList>
+        <div className="saved-movies__spacer"></div>
+      </main>
       <Footer />
     </div>
   )

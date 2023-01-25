@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg"
 function LogoLink() {
   return (
     <Link className="link-hover-effect" to="/">
-      <img className="logolink__logo" src={logo} alt="логотип" />
+      <img className="logolink" src={logo} alt="логотип" />
     </Link>
   )
 }

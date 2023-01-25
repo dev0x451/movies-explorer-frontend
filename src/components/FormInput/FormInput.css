@@ -10,12 +10,9 @@
   outline: none;
   border: none;
   padding: 0 0 0 15px;
-
-  font-family: "Inter";
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
-  color: #fff;
 }
 
 @media screen and (max-width: 470px) {
@@ -32,12 +29,11 @@
   outline: 1px solid #f00;
 } */
 
-.form-input__validation-message {
+.form-input-validation-message {
   position: absolute;
   top: 71px;
   left: 0;
-  margin: 0 0 0;
-  font-family: "Inter";
+  margin: 0;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
@@ -47,7 +43,6 @@
 .forminput__label {
   margin: 0 0 10px;
   display: block;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;

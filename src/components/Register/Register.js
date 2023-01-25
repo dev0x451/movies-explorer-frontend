@@ -9,7 +9,7 @@ function Register() {
     <div className="register">
       <div className="register__container">
         <LogoLink />
-        <h2 className="register__heading">Добро пожаловать!</h2>
+        <h1 className="register__heading">Добро пожаловать!</h1>
         <form className="register__form">
           <div className="register__form-input">
             <FormInput

@@ -1,5 +1,4 @@
 import "./NavMoviesAccount.css"
-// import { Link } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { useState } from "react"
 
@@ -57,15 +56,15 @@ function NavMoviesAccount() {
         }
       ></div>
 
-      <div className="nav-movies-account-mobile__close-buttion-container">
+      <div className="nav-movies-account-mobile-close-buttion-container">
         <nav
           className={
             isOpen
-              ? "nav-movies-account-mobile__contatiner nav-movies-account-mobile__contatiner_visible"
-              : "nav-movies-account-mobile__contatiner"
+              ? "nav-movies-account-mobile-contatiner nav-movies-account-mobile-contatiner_visible"
+              : "nav-movies-account-mobile-contatiner"
           }
         >
-          <div className="nav-movies-account-mobile__links">
+          <div className="nav-movies-account-mobile-links">
             <NavLink
               onClick={onMenuClick}
               className="nav-movies-account__link link-hover-effect nav-movies-account__link_mobile"

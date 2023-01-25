@@ -38,11 +38,9 @@
 
 .login__heading {
   margin: 36px 0 0;
-  font-family: "Inter";
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
-  color: #fff;
 }
 
 @media screen and (max-width: 470px) {
@@ -108,7 +106,6 @@
 
 .login__bottom-text-question {
   margin: 0 6px 0 0;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -123,7 +120,6 @@
 }
 
 .login__bottom-text-link {
-  font-family: "Inter";
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

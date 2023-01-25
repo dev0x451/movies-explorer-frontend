@@ -16,7 +16,7 @@ function FormInput({ label, type, id, placeholder }) {
         maxLength="30"
         required
       ></input>
-      <div className="form-input__validation-message">Ошибка валидации</div>
+      <div className="form-input-validation-message">Ошибка валидации</div>
     </div>
   )
 }

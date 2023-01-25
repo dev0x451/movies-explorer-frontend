@@ -9,7 +9,7 @@ function Login() {
     <div className="login">
       <div className="login__container">
         <LogoLink />
-        <h2 className="login__heading">Рады видеть!</h2>
+        <h1 className="login__heading">Рады видеть!</h1>
         <form className="login__form">
           <div className="login__form-input">
             <FormInput

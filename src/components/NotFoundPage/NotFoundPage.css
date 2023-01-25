@@ -22,11 +22,9 @@
 .notfoundpage__heading {
   margin: 0;
   padding-top: 246px;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 140px;
   line-height: 169px;
-  color: #fff;
 }
 
 @media screen and (max-width: 980px) {
@@ -46,11 +44,9 @@
 .notfoundpage__subtitle {
   margin: 0;
   padding: 5px 0 184px;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: #fff;
 }
 
 @media screen and (max-width: 470px) {
@@ -66,7 +62,6 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

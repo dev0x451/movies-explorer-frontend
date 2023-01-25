@@ -6,7 +6,7 @@ function Profile() {
   return (
     <div className="profile">
       <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
-      <h2 className="profile__heading">Привет, Виталий!</h2>
+      <h1 className="profile__heading">Привет, Виталий!</h1>
       <div className="profile__info-container">
         <div className="profile__info-line profile__info-line_underlined">
           <span>Имя</span>

@@ -34,12 +34,10 @@
 }
 
 .movies-card__title {
-  margin: 0;
-  font-family: "Inter";
+  margin: 0 10px 0 0;
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
-  color: #fff;
 }
 
 @media screen and (max-width: 470px) {
@@ -50,7 +48,6 @@
 }
 
 .movies-card__duration {
-  font-family: "Inter";
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;

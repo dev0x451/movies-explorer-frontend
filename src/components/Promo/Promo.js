@@ -21,7 +21,7 @@ function Promo() {
           </Link>
         </div>
 
-        <img className="promo__logo" src={webLogo} alt="" />
+        <img className="promo__logo" src={webLogo} alt="логотип WWW" />
       </div>
     </div>
   )

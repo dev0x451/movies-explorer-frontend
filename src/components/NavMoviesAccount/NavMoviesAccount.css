@@ -46,7 +46,7 @@
   }
 }
 
-.nav-movies-account-mobile__contatiner {
+.nav-movies-account-mobile-contatiner {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -62,23 +62,23 @@
 }
 
 @media screen and (max-width: 520px) {
-  .nav-movies-account-mobile__contatiner {
+  .nav-movies-account-mobile-contatiner {
     width: 320px;
     padding: 144px 0 48px;
   }
 }
 
 @media screen and (max-width: 980px) {
-  .nav-movies-account-mobile__contatiner_visible {
+  .nav-movies-account-mobile-contatiner_visible {
     display: flex;
   }
 }
 
-.nav-movies-account-mobile__close-buttion-container {
+.nav-movies-account-mobile-close-buttion-container {
   position: relative;
 }
 
-.nav-movies-account-mobile__links {
+.nav-movies-account-mobile-links {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,19 +88,21 @@
 }
 
 @media screen and (max-width: 520px) {
-  .nav-movies-account-mobile__links {
+  .nav-movies-account-mobile-links {
     min-height: 119px;
   }
 }
 
 .nav-movies-account__link {
-  font-family: "Inter";
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: #fff;
   text-decoration: none;
   margin: 0 20px 0 0;
+}
+
+.nav-movies-account__link:last-child {
+  margin: 0;
 }
 
 .nav-movies-account__link_active {
@@ -133,14 +135,6 @@
 .nav-movies-account__account-container:visited {
   color: #fff;
 }
-
-/* .nav-movies-account__account-text {
-  font-family: "Inter";
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  color: #fff;
-} */
 
 .nav-movies-account__account-icon-container {
   display: flex;

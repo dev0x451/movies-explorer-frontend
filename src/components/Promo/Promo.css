@@ -13,7 +13,7 @@
 @media screen and (max-width: 470px) {
   .promo {
     padding: 5px 18px 0;
-    min-height: 635px;
+    min-height: 690px;
   }
 }
 
@@ -68,8 +68,6 @@
 }
 
 .promo__title {
-  color: #fff;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
@@ -94,9 +92,7 @@
 }
 
 .promo__subtitle {
-  color: #fff;
   opacity: 0.5;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -129,8 +125,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-family: "Inter";
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;

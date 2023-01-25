@@ -19,7 +19,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Inter";
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -37,11 +36,9 @@
 }
 
 .nav-login-register__reg-button {
-  font-family: "Inter";
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #fff;
   text-decoration: none;
 }
 

@@ -1,6 +1,2 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/inter.css);
-
-* {
-  box-sizing: border-box;
-}

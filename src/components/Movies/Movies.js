@@ -11,63 +11,41 @@ function Movies() {
     <div className="movies">
       <Preloader />
       <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
-      <MoviesSearch />
-      <MoviesCardList>
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="saved"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="saved"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        {/* <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        /> */}
-        {/* <MoviesCard
-          title="В погоне за Бенкси"
-          duration="27"
-          poster={require("../../images/poster_ref.png")}
-          savedState="save"
-        />
-        <MoviesCard
+      <main>
+        <h1 className="movies-hidden-header">Фильмы</h1>
+        <MoviesSearch />
+        <MoviesCardList>
+          <MoviesCard
+            title="В погоне за Бенкси"
+            duration="27"
+            poster={require("../../images/poster_ref.png")}
+            savedState="saved"
+          />
+          <MoviesCard
+            title="В погоне за Бенкси"
+            duration="27"
+            poster={require("../../images/poster_ref.png")}
+            savedState="saved"
+          />
+          <MoviesCard
+            title="В погоне за Бенкси"
+            duration="27"
+            poster={require("../../images/poster_ref.png")}
+            savedState="save"
+          />
+          <MoviesCard
+            title="В погоне за Бенкси"
+            duration="27"
+            poster={require("../../images/poster_ref.png")}
+            savedState="save"
+          />
+          <MoviesCard
+            title="В погоне за Бенкси"
+            duration="27"
+            poster={require("../../images/poster_ref.png")}
+            savedState="save"
+          />
+          {/* <MoviesCard
           title="В погоне за Бенкси"
           duration="27"
           poster={require("../../images/poster_ref.png")}
@@ -85,8 +63,33 @@ function Movies() {
           poster={require("../../images/poster_ref.png")}
           savedState="save"
         /> */}
-      </MoviesCardList>
-      <button className="movies__loadmore-btn">Еще</button>
+          {/* <MoviesCard
+          title="В погоне за Бенкси"
+          duration="27"
+          poster={require("../../images/poster_ref.png")}
+          savedState="save"
+        />
+        <MoviesCard
+          title="В погоне за Бенкси"
+          duration="27"
+          poster={require("../../images/poster_ref.png")}
+          savedState="save"
+        />
+        <MoviesCard
+          title="В погоне за Бенкси"
+          duration="27"
+          poster={require("../../images/poster_ref.png")}
+          savedState="save"
+        />
+        <MoviesCard
+          title="В погоне за Бенкси"
+          duration="27"
+          poster={require("../../images/poster_ref.png")}
+          savedState="save"
+        /> */}
+        </MoviesCardList>
+        <button className="movies__loadmore-btn">Еще</button>
+      </main>
       <Footer />
     </div>
   )

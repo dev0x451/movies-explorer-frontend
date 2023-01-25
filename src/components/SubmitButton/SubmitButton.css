@@ -5,13 +5,9 @@
   background: #4285f4;
   border-radius: 3px;
   border: 0;
-
-  font-family: "Inter";
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-
-  color: #fff;
   cursor: pointer;
 }
 

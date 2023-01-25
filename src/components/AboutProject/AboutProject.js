@@ -7,19 +7,19 @@ function AboutProject() {
       <HeadLine text="О проекте" />
       <div className="aboutproject__diploma">
         <div className="aboutproject__diploma-text">
-          <h3 className="aboutproject__diploma-text_header">
+          <h3 className="aboutproject__diploma-header">
             Дипломный проект включал 5 этапов
           </h3>
-          <p className="aboutproject__diploma-text_description">
+          <p className="aboutproject__diploma-description">
             Составление плана, работу над бэкендом, вёрстку, добавление
             функциональности&nbsp;и&nbsp;финальные доработки.
           </p>
         </div>
         <div className="aboutproject__diploma-text">
-          <h3 className="aboutproject__diploma-text_header">
+          <h3 className="aboutproject__diploma-header">
             На выполнение диплома ушло 5 недель
           </h3>
-          <p className="aboutproject__diploma-text_description">
+          <p className="aboutproject__diploma-description">
             У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
             соблюдать,&nbsp;чтобы успешно защититься.
           </p>

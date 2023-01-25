@@ -10,7 +10,7 @@ function MovieSaveButton({ savedState }) {
       : ""
 
   return (
-    <button className={cssClass}>
+    <div className={cssClass}>
       {savedState === "saved" ? (
         <div className="movie-save-button__saved-icon"></div>
       ) : savedState === "remove" ? (
@@ -18,7 +18,7 @@ function MovieSaveButton({ savedState }) {
       ) : (
         "Сохранить"
       )}
-    </button>
+    </div>
   )
 }
 
