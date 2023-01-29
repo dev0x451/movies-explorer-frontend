@@ -1,10 +1,30 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import { Link, useHistory } from "react-router-dom"
 import LogoLink from "../LogoLink/LogoLink"
 import FormInput from "../FormInput/FormInput"
 import SubmitButton from "../SubmitButton/SubmitButton"
+import { mainAPI } from "../../utils/MainApi"
+import { ERRORS } from "../../utils/errors"
 import "./Login.css"
 
-function Login() {
+function Login({ onSubmit }) {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [apiErrorMessage, setApiErrorMessage] = useState("")
+
+  function handleChangeEmail(e) {
+    setEmail(e.target.value)
+  }
+
+  function handleChangePassword(e) {
+    setPassword(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    onSubmit(email, password)
+  }
+
   return (
     <div className="login">
       <div className="login__container">
@@ -17,15 +37,23 @@ function Login() {
               type="email"
               id="email-input"
               placeholder="pochta@yandex.ru"
+              value={email}
+              onChange={handleChangeEmail}
             />
-            <FormInput label="Пароль" type="password" id="password-input" />
+            <FormInput
+              label="Пароль"
+              type="password"
+              id="password-input"
+              value={password}
+              onChange={handleChangePassword}
+            />
           </div>
 
           <div className="login__form-submit-button">
             <SubmitButton
               title="Войти"
-              onSubmit={null}
-              errorMessage="При обновлении профиля произошла ошибка."
+              onSubmit={handleSubmit}
+              errorMessage={apiErrorMessage}
             />
           </div>
         </form>

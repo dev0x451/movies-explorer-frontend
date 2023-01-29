@@ -1,9 +1,13 @@
 .apierrormessage {
-  /* visibility: hidden; */
+  visibility: hidden;
   width: 100%;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
   text-align: center;
   color: #ff004c;
+}
+
+.apierrormessage_visible {
+  visibility: visible;
 }

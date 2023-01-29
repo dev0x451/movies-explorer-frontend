@@ -1,6 +1,6 @@
 import "./FormInput.css"
 
-function FormInput({ label, type, id, placeholder }) {
+function FormInput({ label, type, id, placeholder, value, onChange }) {
   return (
     <div className="forminput">
       <label className="forminput__label" htmlFor={id}>
@@ -15,6 +15,8 @@ function FormInput({ label, type, id, placeholder }) {
         minLength="2"
         maxLength="30"
         required
+        value={value}
+        onChange={onChange}
       ></input>
       <div className="form-input-validation-message">Ошибка валидации</div>
     </div>

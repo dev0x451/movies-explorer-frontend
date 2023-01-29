@@ -3,8 +3,33 @@ import "./Register.css"
 import LogoLink from "../LogoLink/LogoLink"
 import SubmitButton from "../SubmitButton/SubmitButton"
 import FormInput from "../FormInput/FormInput"
+import { mainAPI } from "../../utils/MainApi"
+import { useState } from "react"
+import { ERRORS } from "../../utils/errors"
 
-function Register() {
+function Register({ onSubmit }) {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [apiErrorMessage, setApiErrorMessage] = useState("")
+
+  function handleChangeName(e) {
+    setName(e.target.value)
+  }
+
+  function handleChangeEmail(e) {
+    setEmail(e.target.value)
+  }
+
+  function handleChangePassword(e) {
+    setPassword(e.target.value)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    onSubmit(name, email, password)
+  }
+
   return (
     <div className="register">
       <div className="register__container">
@@ -17,21 +42,31 @@ function Register() {
               type="text"
               id="name-input"
               placeholder="Виталий"
+              value={name}
+              onChange={handleChangeName}
             />
             <FormInput
               label="E-mail"
               type="email"
               id="email-input"
               placeholder="pochta@yandex.ru"
+              value={email}
+              onChange={handleChangeEmail}
             />
-            <FormInput label="Пароль" type="password" id="password-input" />
+            <FormInput
+              label="Пароль"
+              type="password"
+              id="password-input"
+              value={password}
+              onChange={handleChangePassword}
+            />
           </div>
 
           <div className="register__form-submit-button">
             <SubmitButton
               title="Зарегистрироваться"
-              onSubmit={null}
-              errorMessage="При обновлении профиля произошла ошибка."
+              onSubmit={handleSubmit}
+              errorMessage={apiErrorMessage}
             />
           </div>
         </form>
