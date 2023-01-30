@@ -1,10 +1,22 @@
 import "./MoviesSearch.css"
 import { useState } from "react"
-function MoviesSearch() {
+function MoviesSearch({ onSubmit }) {
   const [shortFilm, setShortFilm] = useState(false)
+  const [query, setQuery] = useState(null)
+
   function onToggleClick() {
     setShortFilm(!shortFilm)
   }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    onSubmit(query, shortFilm)
+  }
+
+  function handleChangeQuery(e) {
+    setQuery(e.target.value)
+  }
+
   return (
     <>
       <section className="movies-search">
@@ -15,9 +27,11 @@ function MoviesSearch() {
             minLength="2"
             required
             placeholder="Фильм"
+            onChange={handleChangeQuery}
           />
           <button
             className="movies-search__form-submitbtn button-hover-effect"
+            onClick={handleSubmit}
             type="submit"
           />
         </form>

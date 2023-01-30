@@ -10,45 +10,84 @@ import { useState, useEffect } from "react"
 import { moviesAPI } from "../../utils/MoviesApi"
 
 function Movies() {
-  const [rawMovies, setRawMovies] = useState([])
+  const [rawMovies, setRawMovies] = useState(null)
+  const [loadingState, setLoadingState] = useState("unloaded")
 
-  useEffect(() => {
+  // useEffect(() => {
+
+  // if
+  //   localStorage.getItem(query) &&
+  //   localStorage.getItem(isShortFilm) &&
+  //   localStorage.getItem(filteredMovies) &&
+  //   })
+
+  function handleSubmitQuery(query, isShortFilm) {
+    const queryLowerCase = query.toLowerCase()
     moviesAPI
       .getMovies()
       .then((movies) => {
-        console.log(movies)
-        setRawMovies(movies)
+        const filteredMovies = movies.filter((movie) => {
+          const nameRU = movie.nameRU.toLowerCase()
+          // const nameEN = movie.nameEN.toLowerCase()
+          return (
+            (nameRU.includes(queryLowerCase) && !isShortFilm) ||
+            (nameRU.includes(queryLowerCase) &&
+              isShortFilm &&
+              movie.duration < 40)
+          )
+        })
+        setRawMovies(filteredMovies)
+        setLoadingState("loaded")
+        localStorage.setItem("query", JSON.stringify(queryLowerCase))
+        localStorage.setItem("isShortFilm", JSON.stringify(isShortFilm))
+        localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies))
       })
-      .catch((err) => console.log(err))
-  }, [])
+      .catch((err) => {
+        setLoadingState("failed")
+        console.log(err)
+      })
+
+    // setRawMovies(JSON.parse(localStorage.getItem("beatsMovies")))
+    // setLoadingState("loaded")
+  }
+
+  // if (loadingState === "loading") return <Preloader visible={true} />
 
   return (
     <div className="movies">
-      <Preloader visible={false} />
       <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
       <main>
         <h1 className="movies-hidden-header">Фильмы</h1>
-        <MoviesSearch />
-        <MoviesCardList>
-          {rawMovies.map((movie, index) => {
-            return (
-              <MoviesCard
-                key={movie.id.toString() || index}
-                title={movie.nameRU}
-                duration={movie.duration}
-                poster={
-                  movie?.image?.url
-                    ? `https://api.nomoreparties.co/${movie.image.url}`
-                    : require("../../images/poster_ref.png")
-                }
-                trailerLink={movie.trailerLink}
-                savedState="save"
-              />
-            )
-          })}
-        </MoviesCardList>
-        <button className="movies__loadmore-btn">Еще</button>
+        <MoviesSearch onSubmit={handleSubmitQuery} />
+        {loadingState === "loaded" ? (
+          <>
+            <MoviesCardList>
+              {rawMovies.map((movie, index) => {
+                return (
+                  <MoviesCard
+                    key={movie.id.toString() || index}
+                    title={movie.nameRU}
+                    duration={movie.duration}
+                    poster={
+                      movie?.image?.url
+                        ? `https://api.nomoreparties.co/${movie.image.url}`
+                        : require("../../images/poster_ref.png")
+                    }
+                    trailerLink={movie.trailerLink}
+                    savedState="save"
+                  />
+                )
+              })}
+            </MoviesCardList>
+            <button className="movies__loadmore-btn">Еще</button>
+          </>
+        ) : (
+          <h1 style={{ color: "red", textAlign: "center" }}>
+            Не удалось загрузить фильмы :(
+          </h1>
+        )}
       </main>
+
       <Footer />
     </div>
   )

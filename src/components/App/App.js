@@ -17,25 +17,22 @@ import Preloader from "../Preloader/Preloader"
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
-  const [isLoggedIn, setIsLoggedIn] = useState("loading")
+  const [isLoggedIn, setIsLoggedIn] = useState(null)
   const history = useHistory()
 
   useEffect(() => {
-    console.log("calling API...")
     mainAPI
       .checkToken()
       .then((res) => {
-        console.log("API success")
-
         setCurrentUser({
           id: res._id,
           name: res.name,
           email: res.email,
         })
-        setIsLoggedIn("auth")
+        setIsLoggedIn(true)
       })
       .catch((err) => {
-        setIsLoggedIn("unauth")
+        setIsLoggedIn(false)
         console.log("ошибка проверки токена", err)
       })
   }, [])
@@ -50,7 +47,7 @@ function App() {
             name: res.name,
             email: res.email,
           })
-          setIsLoggedIn("auth")
+          setIsLoggedIn(true)
 
           history.push("/movies")
         })
@@ -71,7 +68,7 @@ function App() {
               name: res.name,
               email: res.email,
             })
-            setIsLoggedIn("auth")
+            setIsLoggedIn(true)
 
             history.push("/movies")
           })
@@ -91,8 +88,7 @@ function App() {
           name: "-",
           email: "-",
         })
-
-        setIsLoggedIn("unauth")
+        setIsLoggedIn(false)
       })
       .catch((err) => {
         // APIErrorMessage(err)
@@ -100,7 +96,7 @@ function App() {
       })
   }
 
-  if (isLoggedIn === "loading") return <Preloader visible={true} />
+  if (isLoggedIn === null) return <Preloader visible={true} />
 
   return (
     <>
@@ -125,13 +121,21 @@ function App() {
             component={SavedMovies}
           ></ProtectedRoute>
           <Route path="/signin">
-            <Login onSubmit={handleSubmitSigninForm} />
+            {isLoggedIn ? (
+              <Redirect to="/" />
+            ) : (
+              <Login onSubmit={handleSubmitSigninForm} />
+            )}
           </Route>
           <Route path="/signup">
-            <Register onSubmit={handleSubmitSignupForm} />
+            {isLoggedIn ? (
+              <Redirect to="/" />
+            ) : (
+              <Register onSubmit={handleSubmitSignupForm} />
+            )}
           </Route>
           <Route exact path="/">
-            <Main />
+            <Main isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/notfound">
             <NotFoundPage />
