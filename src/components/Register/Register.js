@@ -35,7 +35,7 @@ function Register({ onSubmit }) {
       <div className="register__container">
         <LogoLink />
         <h1 className="register__heading">Добро пожаловать!</h1>
-        <form className="register__form">
+        <form className="register__form" onSubmit={handleSubmit}>
           <div className="register__form-input">
             <FormInput
               label="Имя"
@@ -65,7 +65,6 @@ function Register({ onSubmit }) {
           <div className="register__form-submit-button">
             <SubmitButton
               title="Зарегистрироваться"
-              onSubmit={handleSubmit}
               errorMessage={apiErrorMessage}
             />
           </div>

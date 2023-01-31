@@ -96,7 +96,7 @@ function App() {
       })
   }
 
-  if (isLoggedIn === null) return <Preloader visible={true} />
+  if (isLoggedIn === null) return <></>
 
   return (
     <>

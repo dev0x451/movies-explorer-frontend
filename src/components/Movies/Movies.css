@@ -4,6 +4,10 @@
   width: 100%;
   min-height: 100vh;
   background-color: #202020;
+}
+
+.movies__container {
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -48,4 +52,10 @@
     margin: 78px auto 117px;
     width: 240px;
   }
+}
+
+.movies__nothing-found {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
 }

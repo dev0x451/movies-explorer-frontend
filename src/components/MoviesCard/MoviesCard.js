@@ -1,7 +1,14 @@
 import "./MoviesCard.css"
 import MovieSaveButton from "../MovieSaveButton/MovieSaveButton"
 
-function MoviesCard({ title, duration, poster, trailerLink, savedState }) {
+function MoviesCard({
+  title,
+  movieID,
+  duration,
+  poster,
+  trailerLink,
+  savedState,
+}) {
   return (
     <div className="movies-card">
       <div className="movies-card__text-container">

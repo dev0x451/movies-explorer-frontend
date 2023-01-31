@@ -1,55 +1,62 @@
 import "./MoviesSearch.css"
-import { useState } from "react"
-function MoviesSearch({ onSubmit }) {
-  const [shortFilm, setShortFilm] = useState(false)
-  const [query, setQuery] = useState(null)
+import { useState, useEffect } from "react"
+function MoviesSearch({ query, isShortFilm, onToggleChange, onSubmit }) {
+  const [shortFilmToggle, setShortFilmToggle] = useState(false)
+  const [localQuery, setLocalQuery] = useState("")
+
+  useEffect(() => {
+    setShortFilmToggle(isShortFilm)
+  }, [isShortFilm])
+
+  useEffect(() => {
+    setLocalQuery(query)
+  }, [query])
 
   function onToggleClick() {
-    setShortFilm(!shortFilm)
+    setShortFilmToggle(!shortFilmToggle)
+    onToggleChange(!shortFilmToggle)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    onSubmit(query, shortFilm)
+    onSubmit(localQuery, shortFilmToggle)
   }
 
   function handleChangeQuery(e) {
-    setQuery(e.target.value)
+    setLocalQuery(e.target.value.toLowerCase())
   }
 
   return (
-    <>
-      <section className="movies-search">
-        <form className="movies-search__form">
-          <input
-            className="movies-search__form-input"
-            type="text"
-            minLength="2"
-            required
-            placeholder="Фильм"
-            onChange={handleChangeQuery}
-          />
-          <button
-            className="movies-search__form-submitbtn button-hover-effect"
-            onClick={handleSubmit}
-            type="submit"
-          />
-        </form>
-        <div className="movies-search__toggle-switch">
-          <div
-            onClick={onToggleClick}
-            className={
-              shortFilm
-                ? "movies-search__toggle-switch-on button-hover-effect"
-                : "movies-search__toggle-switch-off button-hover-effect"
-            }
-          ></div>
-          <div className="movies-search__toggle-switch-text">
-            Короткометражки
-          </div>
-        </div>
-      </section>
-    </>
+    <section className="movies-search">
+      <form className="movies-search__form" onSubmit={handleSubmit}>
+        <input
+          className="movies-search__form-input"
+          id="movie-search-input"
+          name="movie-search-input"
+          type="text"
+          minLength="2"
+          required
+          placeholder="Фильм"
+          value={localQuery}
+          onChange={handleChangeQuery}
+        />
+        <button
+          className="movies-search__form-submitbtn button-hover-effect"
+          type="submit"
+        />
+      </form>
+      <div className="movies-search__toggle-switch">
+        <div
+          onClick={onToggleClick}
+          className={
+            shortFilmToggle
+              ? "movies-search__toggle-switch-on button-hover-effect"
+              : "movies-search__toggle-switch-off button-hover-effect"
+          }
+        ></div>
+        <div className="movies-search__toggle-switch-text">Короткометражки</div>
+      </div>
+    </section>
   )
 }
 

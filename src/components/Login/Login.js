@@ -30,7 +30,7 @@ function Login({ onSubmit }) {
       <div className="login__container">
         <LogoLink />
         <h1 className="login__heading">Рады видеть!</h1>
-        <form className="login__form">
+        <form className="login__form" onSubmit={handleSubmit}>
           <div className="login__form-input">
             <FormInput
               label="E-mail"
@@ -50,11 +50,7 @@ function Login({ onSubmit }) {
           </div>
 
           <div className="login__form-submit-button">
-            <SubmitButton
-              title="Войти"
-              onSubmit={handleSubmit}
-              errorMessage={apiErrorMessage}
-            />
+            <SubmitButton title="Войти" errorMessage={apiErrorMessage} />
           </div>
         </form>
 
