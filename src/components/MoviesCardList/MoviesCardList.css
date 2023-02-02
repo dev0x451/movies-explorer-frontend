@@ -10,13 +10,6 @@
   row-gap: 32px;
 }
 
-/* @media screen and (max-width: 980px) {
-  .movies-card-list {
-    margin: 33px auto 0;
-    padding: 0 30px;
-  }
-} */
-
 @media screen and (max-width: 980px) {
   .movies-card-list {
     max-width: 768px;

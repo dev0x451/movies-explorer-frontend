@@ -3,6 +3,7 @@ import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"
 import { mainAPI } from "../../utils/MainApi"
+import { moviesAPI } from "../../utils/MoviesApi"
 
 import Main from "../Main/Main"
 import Movies from "../Movies/Movies"
@@ -18,6 +19,8 @@ import Preloader from "../Preloader/Preloader"
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(null)
+  const [savedMovies, setSavedMovies] = useState([])
+
   const history = useHistory()
 
   useEffect(() => {
@@ -89,11 +92,29 @@ function App() {
           email: "-",
         })
         setIsLoggedIn(false)
+        localStorage.removeItem("query")
+        localStorage.removeItem("isShortFilm")
+        localStorage.removeItem("movies")
       })
       .catch((err) => {
         // APIErrorMessage(err)
         console.log(err)
       })
+  }
+
+  function findMovieMatch(id) {
+    return savedMovies.findIndex((movie) => movie.movieId == id)
+  }
+
+  function deleteMovie(movieID) {
+    const index = findMovieMatch(movieID)
+    if (index != -1) {
+      mainAPI.deleteMovie(savedMovies[index]._id).then((res) => {
+        const tmpArr = [...savedMovies]
+        tmpArr.splice(index, 1)
+        setSavedMovies(tmpArr)
+      })
+    } else console.log("нельзя удалить")
   }
 
   if (isLoggedIn === null) return <></>
@@ -112,12 +133,18 @@ function App() {
             path="/movies"
             currentUser={currentUser}
             isLoggedIn={isLoggedIn}
+            savedMovies={savedMovies}
+            setSavedMovies={setSavedMovies}
+            deleteMovie={deleteMovie}
             component={Movies}
           ></ProtectedRoute>
           <ProtectedRoute
             path="/saved-movies"
             currentUser={currentUser}
             isLoggedIn={isLoggedIn}
+            savedMovies={savedMovies}
+            setSavedMovies={setSavedMovies}
+            deleteMovie={deleteMovie}
             component={SavedMovies}
           ></ProtectedRoute>
           <Route path="/signin">

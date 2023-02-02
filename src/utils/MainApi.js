@@ -49,6 +49,43 @@ class MainAPI {
       credentials: "include",
     }).then(this._checkResponse)
   }
+
+  getSavedMovies() {
+    return fetch(`${this._url}/movies`, {
+      method: "GET",
+      headers: this._headers,
+      credentials: "include",
+    }).then(this._checkResponse)
+  }
+
+  saveMovie(movieInfo) {
+    return fetch(`${this._url}/movies`, {
+      method: "POST",
+      headers: this._headers,
+      credentials: "include",
+      body: JSON.stringify(movieInfo),
+    }).then(this._checkResponse)
+  }
+
+  // country: movieInfo.country,
+  // director: movieInfo.director,
+  // duration: movieInfo.duration,
+  // year: movieInfo.year,
+  // description: movieInfo.description,
+  // image: movieInfo.image,
+  // trailerLink: movieInfo.trailerLink,
+  // nameRU: movieInfo.nameRU,
+  // nameEN: movieInfo.nameEN,
+  // thumbnail: movieInfo.thumbnail,
+  // movieId: movieInfo.movieId,
+
+  deleteMovie(movieId) {
+    return fetch(`${this._url}/movies/${movieId}`, {
+      method: "DELETE",
+      headers: this._headers,
+      credentials: "include",
+    }).then(this._checkResponse)
+  }
 }
 
 export const mainAPI = new MainAPI({

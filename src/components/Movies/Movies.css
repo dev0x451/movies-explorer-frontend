@@ -55,7 +55,25 @@
 }
 
 .movies__nothing-found {
+  padding: 0 70px;
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
+  max-width: 600px;
+  text-align: center;
+}
+
+@media screen and (max-width: 980px) {
+  .movies__nothing-found {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .movies__nothing-found {
+    max-width: 300px;
+    padding: 0 10px;
+    font-size: 11px;
+    line-height: 15px;
+  }
 }

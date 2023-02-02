@@ -9,47 +9,77 @@ import Preloader from "../Preloader/Preloader"
 import { useState, useEffect } from "react"
 import { useWindowSize } from "../../hooks/useWindowSize"
 import { moviesAPI } from "../../utils/MoviesApi"
+import { mainAPI } from "../../utils/MainApi"
 
-function Movies() {
+function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
   const [movies, setMovies] = useState([])
-  const [displayedMovies, setDisplayedMovies] = useState([])
-  const [displayedMoviesIndex, setDisplayedMoviesIndex] = useState({ count: 0 })
-  const [loadMore, setLoadMore] = useState(false)
+  // const [savedMovies, setSavedMovies] = useState([])
   const [query, setQuery] = useState("")
   const [isShortFilm, setIsShortFilm] = useState(false)
-
+  const [displayedMovies, setDisplayedMovies] = useState([])
+  const [displayedMoviesIndex, setDisplayedMoviesIndex] = useState(0)
+  const [loadMore, setLoadMore] = useState(false)
   const [moviesDisplayState, setMoviesDisplayState] = useState("unloaded")
   const [clientWidth, clientHeight] = useWindowSize()
+
+  let increment = 0
+  if (clientWidth > 980) increment = 3
+  else if (clientWidth >= 320) increment = 2
 
   useEffect(() => {
     const localQuery = JSON.parse(localStorage.getItem("query"))
     const localIsShortFilm = JSON.parse(localStorage.getItem("isShortFilm"))
-    const localFilteredMovies = JSON.parse(
-      localStorage.getItem("filteredMovies")
-    )
+    const localMovies = JSON.parse(localStorage.getItem("movies"))
 
     if (
       localQuery !== null &&
       localIsShortFilm !== null &&
-      localFilteredMovies !== null
+      localMovies !== null
     ) {
       setQuery(localQuery)
       setIsShortFilm(localIsShortFilm)
-      setMovies(localFilteredMovies)
-      setMoviesDisplayState("results-found")
+
+      if (typeof localQuery === "string" && localQuery.trim() === "") {
+        setMovies(localMovies)
+        setMoviesDisplayState("loaded")
+      } else {
+        const filteredMovies = filterMovies(
+          localMovies,
+          localQuery,
+          localIsShortFilm
+        )
+
+        if (filteredMovies.length > 0) {
+          setMovies(filteredMovies)
+          setMoviesDisplayState("results-found")
+        } else {
+          setMovies(localMovies)
+          setMoviesDisplayState("nothing-found")
+        }
+      }
+    } else {
+      moviesAPI
+        .getMovies()
+        .then((movies) => {
+          localStorage.setItem("query", JSON.stringify(null))
+          localStorage.setItem("isShortFilm", false)
+          localStorage.setItem("movies", JSON.stringify(movies))
+          setMovies(movies)
+          setMoviesDisplayState("loaded")
+        })
+        .catch((err) => {
+          setMoviesDisplayState("failed-to-fetch")
+          console.log(err)
+        })
+
+      getSavedMovies()
     }
   }, [])
 
   useEffect(() => {
-    setDisplayedMoviesIndex({ count: 0 })
-    renderMovies(movies)
-  }, [movies])
-
-  useEffect(() => {
-    console.log("Index on resize ", displayedMoviesIndex.count)
-    setDisplayedMoviesIndex({ count: 0 })
-    handleToggleChange(isShortFilm)
-  }, [clientWidth])
+    setDisplayedMoviesIndex(0)
+    renderMovies()
+  }, [movies, clientWidth])
 
   function filterMovies(movies, query, isShortFilm) {
     return movies.filter((movie) => {
@@ -62,66 +92,121 @@ function Movies() {
   }
 
   function handleToggleChange(isToggled) {
-    if (moviesDisplayState !== "unloaded") {
-      const filteredMovies = filterMovies(movies, query, isToggled)
-      setDisplayedMoviesIndex({ count: 0 })
+    if (
+      moviesDisplayState === "results-found" ||
+      moviesDisplayState === "nothing-found"
+    ) {
+      const localMovies = JSON.parse(localStorage.getItem("movies"))
+      const filteredMovies = filterMovies(localMovies, query, isToggled)
+      setDisplayedMoviesIndex(0)
+      setLoadMore(false)
       setMovies(filteredMovies)
-      filteredMovies.length > 0
-        ? setMoviesDisplayState("results-found")
-        : setMoviesDisplayState("nothing-found")
+      setIsShortFilm(isToggled)
+      localStorage.setItem("isShortFilm", JSON.stringify(isToggled))
+
+      if (filteredMovies.length > 0) {
+        setMovies(filteredMovies)
+        setMoviesDisplayState("results-found")
+      } else {
+        setMoviesDisplayState("nothing-found")
+      }
     }
   }
 
-  function renderMovies(movies) {
-    let increment = 0
-    if (clientWidth > 980) {
-      increment = 3
-    } else if (clientWidth > 470) {
-      increment = 2
-    } else increment = 1
-
-    setDisplayedMovies(movies.slice(0, displayedMoviesIndex.count + increment))
-
-    if (displayedMoviesIndex.count + increment >= movies.length) {
-      setDisplayedMoviesIndex({ count: 0 })
-      setLoadMore(false)
-    } else {
-      setDisplayedMoviesIndex({ count: displayedMoviesIndex.count + increment })
+  function renderMovies() {
+    const x = movies.length - increment
+    setDisplayedMovies(movies.slice(0, x > 0 ? increment : movies.length))
+    if (movies.length > increment) {
+      setDisplayedMoviesIndex(increment)
       setLoadMore(true)
     }
   }
 
   function handleSubmitQuery(query, isShortFilm) {
+    console.log("handleSubmitQuery ", query)
+    console.log("handleSubmitQuery ", isShortFilm)
     setMoviesDisplayState("loading")
     setQuery(query)
+    const localMovies = JSON.parse(localStorage.getItem("movies"))
+    const filteredMovies = filterMovies(localMovies, query, isShortFilm)
 
-    moviesAPI
-      .getMovies()
+    if (filteredMovies.length > 0) {
+      setMovies(filteredMovies)
+      setMoviesDisplayState("results-found")
+    } else {
+      setMoviesDisplayState("nothing-found")
+    }
+    localStorage.setItem("query", JSON.stringify(query))
+    localStorage.setItem("isShortFilm", JSON.stringify(isShortFilm))
+  }
+
+  function handleLoadMore() {
+    setDisplayedMovies(movies.slice(0, displayedMoviesIndex + increment))
+    if (displayedMoviesIndex + increment >= movies.length) {
+      setDisplayedMoviesIndex(0)
+      setLoadMore(false)
+    } else {
+      setDisplayedMoviesIndex(displayedMoviesIndex + increment)
+      setLoadMore(true)
+    }
+  }
+
+  function handleMovieCardClick(movieID, savedState) {
+    if (savedState === "save") {
+      saveMovie(movieID)
+    } else if (savedState === "saved") {
+      deleteMovie(movieID)
+    }
+  }
+
+  function getSavedMovies() {
+    mainAPI
+      .getSavedMovies()
       .then((movies) => {
-        const filteredMovies = filterMovies(movies, query, isShortFilm)
-
-        if (filteredMovies.length > 0) {
-          setMovies(filteredMovies)
-          setMoviesDisplayState("results-found")
-          setDisplayedMoviesIndex({ count: 0 })
-          localStorage.setItem("query", JSON.stringify(query))
-          localStorage.setItem("isShortFilm", JSON.stringify(isShortFilm))
-          localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies))
-        } else {
-          setMoviesDisplayState("nothing-found")
-        }
+        console.log("фильмы из нашей базы: ", movies)
+        setSavedMovies(movies)
       })
       .catch((err) => {
-        setMoviesDisplayState("failed-to-fetch")
         console.log(err)
       })
   }
 
-  function handleLoadMore() {
-    renderMovies(movies)
+  function saveMovie(movieID) {
+    const index = movies.findIndex((movie) => movie.id == movieID)
+
+    if (index !== -1) {
+      mainAPI
+        .saveMovie({
+          country: movies[index].country,
+          director: movies[index].director,
+          duration: movies[index].duration,
+          year: movies[index].year,
+          description: movies[index].description,
+          image: `https://api.nomoreparties.co${movies[index].image.url}`,
+          trailerLink: movies[index].trailerLink,
+          thumbnail: `https://api.nomoreparties.co${movies[index].image.formats.thumbnail.url}`,
+          movieId: movies[index].id,
+          nameRU: movies[index].nameRU,
+          nameEN: movies[index].nameEN,
+        })
+
+        .then((res) => {
+          console.log("movie saved: ", res)
+          getSavedMovies()
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }
 
-  // if (loadingState === "loading") return <Preloader visible={true} />
+  function findMovieMatch(id) {
+    return savedMovies.findIndex((movie) => movie.movieId == id)
+  }
+
+  ///////////////////
+  console.log(savedMovies)
+  ///////////////////
 
   return (
     <div className="movies">
@@ -148,11 +233,14 @@ function Movies() {
                     duration={movie.duration}
                     poster={
                       movie?.image?.url
-                        ? `https://api.nomoreparties.co/${movie.image.url}`
+                        ? `https://api.nomoreparties.co${movie.image.url}`
                         : require("../../images/poster_ref.png")
                     }
                     trailerLink={movie.trailerLink}
-                    savedState="save"
+                    savedState={
+                      findMovieMatch(movie.id) != -1 ? "saved" : "save"
+                    }
+                    onCardClick={handleMovieCardClick}
                   />
                 )
               })}
@@ -167,7 +255,7 @@ function Movies() {
             )}
           </>
         ) : moviesDisplayState === "failed-to-fetch" ? (
-          <h2 style={{ color: "red", textAlign: "center" }}>
+          <h2 className="movies__nothing-found">
             Во время запроса произошла ошибка. Возможно, проблема с соединением
             или сервер недоступен. Подождите немного и попробуйте ещё раз
           </h2>

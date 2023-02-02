@@ -38,12 +38,17 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
+  /* white-space: nowrap; */
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  /* max-width: 245px; */
 }
 
 @media screen and (max-width: 470px) {
   .movies-card__title {
     font-size: 12px;
     line-height: 18px;
+    /* max-width: 245px; */
   }
 }
 
