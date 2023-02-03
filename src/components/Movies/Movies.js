@@ -11,9 +11,8 @@ import { useWindowSize } from "../../hooks/useWindowSize"
 import { moviesAPI } from "../../utils/MoviesApi"
 import { mainAPI } from "../../utils/MainApi"
 
-function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
+function Movies({ savedMovies, getSavedMovies, deleteMovie, filterMovies }) {
   const [movies, setMovies] = useState([])
-  // const [savedMovies, setSavedMovies] = useState([])
   const [query, setQuery] = useState("")
   const [isShortFilm, setIsShortFilm] = useState(false)
   const [displayedMovies, setDisplayedMovies] = useState([])
@@ -30,6 +29,8 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
     const localQuery = JSON.parse(localStorage.getItem("query"))
     const localIsShortFilm = JSON.parse(localStorage.getItem("isShortFilm"))
     const localMovies = JSON.parse(localStorage.getItem("movies"))
+
+    getSavedMovies()
 
     if (
       localQuery !== null &&
@@ -71,8 +72,6 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
           setMoviesDisplayState("failed-to-fetch")
           console.log(err)
         })
-
-      getSavedMovies()
     }
   }, [])
 
@@ -81,52 +80,18 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
     renderMovies()
   }, [movies, clientWidth])
 
-  function filterMovies(movies, query, isShortFilm) {
-    return movies.filter((movie) => {
-      const nameRU = movie.nameRU.toLowerCase()
-      return (
-        (nameRU.includes(query) && !isShortFilm) ||
-        (nameRU.includes(query) && isShortFilm && movie.duration < 40)
-      )
-    })
-  }
-
-  function handleToggleChange(isToggled) {
+  useEffect(() => {
     if (
-      moviesDisplayState === "results-found" ||
-      moviesDisplayState === "nothing-found"
+      (moviesDisplayState === "results-found" ||
+        moviesDisplayState === "nothing-found") &&
+      query
     ) {
-      const localMovies = JSON.parse(localStorage.getItem("movies"))
-      const filteredMovies = filterMovies(localMovies, query, isToggled)
-      setDisplayedMoviesIndex(0)
-      setLoadMore(false)
-      setMovies(filteredMovies)
-      setIsShortFilm(isToggled)
-      localStorage.setItem("isShortFilm", JSON.stringify(isToggled))
-
-      if (filteredMovies.length > 0) {
-        setMovies(filteredMovies)
-        setMoviesDisplayState("results-found")
-      } else {
-        setMoviesDisplayState("nothing-found")
-      }
+      submitQuery()
     }
-  }
+  }, [isShortFilm])
 
-  function renderMovies() {
-    const x = movies.length - increment
-    setDisplayedMovies(movies.slice(0, x > 0 ? increment : movies.length))
-    if (movies.length > increment) {
-      setDisplayedMoviesIndex(increment)
-      setLoadMore(true)
-    }
-  }
-
-  function handleSubmitQuery(query, isShortFilm) {
-    console.log("handleSubmitQuery ", query)
-    console.log("handleSubmitQuery ", isShortFilm)
+  function submitQuery() {
     setMoviesDisplayState("loading")
-    setQuery(query)
     const localMovies = JSON.parse(localStorage.getItem("movies"))
     const filteredMovies = filterMovies(localMovies, query, isShortFilm)
 
@@ -138,6 +103,22 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
     }
     localStorage.setItem("query", JSON.stringify(query))
     localStorage.setItem("isShortFilm", JSON.stringify(isShortFilm))
+  }
+
+  function handleSubmitQuery() {
+    if (query) {
+      submitQuery()
+    }
+  }
+
+  function renderMovies() {
+    setLoadMore(false)
+    const x = movies.length - increment
+    setDisplayedMovies(movies.slice(0, x > 0 ? increment : movies.length))
+    if (movies.length > increment) {
+      setDisplayedMoviesIndex(increment)
+      setLoadMore(true)
+    }
   }
 
   function handleLoadMore() {
@@ -157,18 +138,6 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
     } else if (savedState === "saved") {
       deleteMovie(movieID)
     }
-  }
-
-  function getSavedMovies() {
-    mainAPI
-      .getSavedMovies()
-      .then((movies) => {
-        console.log("фильмы из нашей базы: ", movies)
-        setSavedMovies(movies)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
   }
 
   function saveMovie(movieID) {
@@ -191,7 +160,6 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
         })
 
         .then((res) => {
-          console.log("movie saved: ", res)
           getSavedMovies()
         })
         .catch((err) => {
@@ -204,10 +172,6 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
     return savedMovies.findIndex((movie) => movie.movieId == id)
   }
 
-  ///////////////////
-  console.log(savedMovies)
-  ///////////////////
-
   return (
     <div className="movies">
       <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
@@ -216,11 +180,12 @@ function Movies({ savedMovies, setSavedMovies, deleteMovie }) {
         <MoviesSearch
           query={query}
           isShortFilm={isShortFilm}
-          onToggleChange={handleToggleChange}
+          setQuery={setQuery}
+          setIsShortFilm={setIsShortFilm}
           onSubmit={handleSubmitQuery}
         />
         {moviesDisplayState === "loading" ? (
-          <Preloader visible="true" />
+          <Preloader />
         ) : moviesDisplayState === "results-found" ? (
           <>
             <MoviesCardList>

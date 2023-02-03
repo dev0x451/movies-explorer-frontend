@@ -3,7 +3,6 @@ import { Route, Switch, Redirect, useHistory } from "react-router-dom"
 import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute"
 import { mainAPI } from "../../utils/MainApi"
-import { moviesAPI } from "../../utils/MoviesApi"
 
 import Main from "../Main/Main"
 import Movies from "../Movies/Movies"
@@ -14,12 +13,14 @@ import Register from "../Register/Register"
 import Profile from "../Profile/Profile"
 
 import "./App.scss"
-import Preloader from "../Preloader/Preloader"
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(null)
   const [savedMovies, setSavedMovies] = useState([])
+  const [apiErrorCodeLogin, setApiErrorCodeLogin] = useState(null)
+  const [apiErrorCodeRegister, setApiErrorCodeRegister] = useState(null)
+  const [apiErrorCodeProfile, setApiErrorCodeProfile] = useState(null)
 
   const history = useHistory()
 
@@ -56,7 +57,10 @@ function App() {
         })
       })
       .catch((err) => {
-        // setApiErrorMessage(ERRORS[err] || "Возникла ошибка")
+        setApiErrorCodeLogin(err)
+        setTimeout(() => {
+          setApiErrorCodeLogin(null)
+        }, 2500)
       })
   }
 
@@ -78,7 +82,26 @@ function App() {
         })
       })
       .catch((err) => {
-        // setApiErrorMessage(ERRORS[err] || "Возникла ошибка")
+        setApiErrorCodeRegister(err)
+        setTimeout(() => {
+          setApiErrorCodeRegister(null)
+        }, 2500)
+      })
+  }
+
+  function handleProfileUpdate(name, email) {
+    mainAPI
+      .updateUser(name, email)
+      .then((res) => {
+        setCurrentUser({ id: res._id, name: res.name, email: res.email })
+        setApiErrorCodeProfile(200)
+
+        setTimeout(() => {
+          setApiErrorCodeProfile(null)
+        }, 2500)
+      })
+      .catch((err) => {
+        setApiErrorCodeProfile(err)
       })
   }
 
@@ -97,13 +120,36 @@ function App() {
         localStorage.removeItem("movies")
       })
       .catch((err) => {
-        // APIErrorMessage(err)
-        console.log(err)
+        setApiErrorCodeProfile(err)
+        setTimeout(() => {
+          setApiErrorCodeProfile(null)
+        }, 2500)
       })
   }
 
   function findMovieMatch(id) {
     return savedMovies.findIndex((movie) => movie.movieId == id)
+  }
+
+  function filterMovies(movies, query, isShortFilm) {
+    return movies.filter((movie) => {
+      const nameRU = movie.nameRU.toLowerCase()
+      return (
+        (nameRU.includes(query) && !isShortFilm) ||
+        (nameRU.includes(query) && isShortFilm && movie.duration < 40)
+      )
+    })
+  }
+
+  function getSavedMovies() {
+    mainAPI
+      .getSavedMovies()
+      .then((movies) => {
+        setSavedMovies(movies)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   function deleteMovie(movieID) {
@@ -126,39 +172,49 @@ function App() {
           <ProtectedRoute
             path="/profile"
             isLoggedIn={isLoggedIn}
+            onProfileEdit={handleProfileUpdate}
+            apiErrorCode={apiErrorCodeProfile}
             onSignOut={handleSignOut}
             component={Profile}
           ></ProtectedRoute>
           <ProtectedRoute
             path="/movies"
-            currentUser={currentUser}
             isLoggedIn={isLoggedIn}
             savedMovies={savedMovies}
+            getSavedMovies={getSavedMovies}
             setSavedMovies={setSavedMovies}
             deleteMovie={deleteMovie}
+            filterMovies={filterMovies}
             component={Movies}
           ></ProtectedRoute>
           <ProtectedRoute
             path="/saved-movies"
-            currentUser={currentUser}
             isLoggedIn={isLoggedIn}
             savedMovies={savedMovies}
+            getSavedMovies={getSavedMovies}
             setSavedMovies={setSavedMovies}
             deleteMovie={deleteMovie}
+            filterMovies={filterMovies}
             component={SavedMovies}
           ></ProtectedRoute>
           <Route path="/signin">
             {isLoggedIn ? (
               <Redirect to="/" />
             ) : (
-              <Login onSubmit={handleSubmitSigninForm} />
+              <Login
+                apiErrorCode={apiErrorCodeLogin}
+                onSubmit={handleSubmitSigninForm}
+              />
             )}
           </Route>
           <Route path="/signup">
             {isLoggedIn ? (
               <Redirect to="/" />
             ) : (
-              <Register onSubmit={handleSubmitSignupForm} />
+              <Register
+                apiErrorCode={apiErrorCodeRegister}
+                onSubmit={handleSubmitSignupForm}
+              />
             )}
           </Route>
           <Route exact path="/">

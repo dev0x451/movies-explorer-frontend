@@ -1,17 +1,28 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import { Link, useHistory } from "react-router-dom"
 import LogoLink from "../LogoLink/LogoLink"
 import FormInput from "../FormInput/FormInput"
 import SubmitButton from "../SubmitButton/SubmitButton"
-import { useFormWithValidation } from "../../hooks/validate"
-
+import { mainAPI } from "../../utils/MainApi"
+import { ERRORS } from "../../utils/statusCodes"
 import "./Login.css"
 
-function Login({ onSubmit, apiErrorCode }) {
-  const { values, handleChange, errors, isValid } = useFormWithValidation()
+function Login({ onSubmit }) {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [apiErrorMessage, setApiErrorMessage] = useState("")
+
+  function handleChangeEmail(e) {
+    setEmail(e.target.value)
+  }
+
+  function handleChangePassword(e) {
+    setPassword(e.target.value)
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
-    onSubmit(values["email-input"], values["password-input"])
+    onSubmit(email, password)
   }
 
   return (
@@ -25,26 +36,21 @@ function Login({ onSubmit, apiErrorCode }) {
               label="E-mail"
               type="email"
               id="email-input"
-              value={values["email-input"]}
-              validationMessage={errors["email-input"]}
-              onChange={handleChange}
+              placeholder="pochta@yandex.ru"
+              value={email}
+              onChange={handleChangeEmail}
             />
             <FormInput
               label="Пароль"
               type="password"
               id="password-input"
-              value={values["password-input"]}
-              validationMessage={errors["password-input"]}
-              onChange={handleChange}
+              value={password}
+              onChange={handleChangePassword}
             />
           </div>
 
           <div className="login__form-submit-button">
-            <SubmitButton
-              title="Войти"
-              isActive={isValid}
-              apiErrorCode={apiErrorCode}
-            />
+            <SubmitButton title="Войти" errorMessage={apiErrorMessage} />
           </div>
         </form>
 

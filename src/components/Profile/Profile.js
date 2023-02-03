@@ -1,41 +1,34 @@
 import "./Profile.css"
 import Header from "../Header/Header"
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import APIResponseMessage from "../APIErrorMessage/APIResponseMessage"
 import React from "react"
 import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import NavMoviesAccount from "../NavMoviesAccount/NavMoviesAccount"
-import APIErrorMessage from "../APIErrorMessage/APIErrorMessage"
-import { mainAPI } from "../../utils/MainApi"
-function Profile({ onSignOut }) {
-  const currentUser = React.useContext(CurrentUserContext)
+import { useFormWithValidation } from "../../hooks/validate"
+import { useEffect } from "react"
 
-  const [name, setName] = useState(currentUser.name)
-  const [email, setEmail] = useState(currentUser.email)
-  const [apiErrorMessage, setApiErrorMessage] = useState("")
+function Profile({ onProfileEdit, onSignOut, apiErrorCode }) {
+  const currentUser = React.useContext(CurrentUserContext)
+  const { values, setValues, handleChange, errors, isValid } =
+    useFormWithValidation()
+
+  useEffect(() => {
+    setValues({
+      "profile-name-input": currentUser.name,
+      "profile-email-input": currentUser.email,
+    })
+  }, [])
 
   function isProfileInfoDifferent() {
-    return name !== currentUser.name || email !== currentUser.email
-  }
-
-  function handleChangeName(e) {
-    setName(e.target.value)
-  }
-
-  function handleChangeEmail(e) {
-    setEmail(e.target.value)
+    return (
+      values["profile-name-input"] !== currentUser.name ||
+      values["profile-email-input"] !== currentUser.email
+    )
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    mainAPI
-      .updateUser(name, email)
-      .then(() => {
-        // setCurrentUser(xxx)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    onProfileEdit(values["profile-name-input"], values["profile-email-input"])
   }
 
   return (
@@ -49,13 +42,19 @@ function Profile({ onSignOut }) {
           </label>
           <input
             className="profile__info-input"
-            type="email"
+            type="text"
             id="profile-name-input"
             name="profile-name-input"
-            placeholder="pochta@yandex.ru"
-            value={name}
-            onChange={handleChangeName}
+            placeholder="Имя"
+            required
+            minLength="2"
+            pattern="[a-zA-ZА-яёЁ\-\s]*"
+            value={values["profile-name-input"] || ""}
+            onChange={handleChange}
           />
+          <div className="profile-input-validation-message">
+            {errors["profile-name-input"]}
+          </div>
         </div>
         <div className="profile__info-line">
           <label className="profile__info-label" htmlFor="profile-email-input">
@@ -66,15 +65,24 @@ function Profile({ onSignOut }) {
             label="E-mail"
             type="email"
             id="profile-email-input"
+            name="profile-email-input"
             placeholder="pochta@yandex.ru"
-            value={email}
-            onChange={handleChangeEmail}
+            required
+            minLength="3"
+            value={values["profile-email-input"] || ""}
+            onChange={handleChange}
           />
+          <div className="profile-input-validation-message">
+            {errors["profile-email-input"]}
+          </div>
         </div>
 
+        <div className="profile__edit-error">
+          <APIResponseMessage apiErrorCode={apiErrorCode} />
+        </div>
         <button
           className="profile__edit-button link-hover-effect"
-          disabled={!isProfileInfoDifferent()}
+          disabled={!isProfileInfoDifferent() || !isValid}
           type="submit"
         >
           Редактировать

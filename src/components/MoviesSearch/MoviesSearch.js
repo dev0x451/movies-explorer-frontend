@@ -1,25 +1,38 @@
 import "./MoviesSearch.css"
 import { useState, useEffect } from "react"
-function MoviesSearch({ query, isShortFilm, onToggleChange, onSubmit }) {
-  const [shortFilmToggle, setShortFilmToggle] = useState(false)
-  const [localQuery, setLocalQuery] = useState("")
+function MoviesSearch({
+  query,
+  isShortFilm,
+  setQuery,
+  setIsShortFilm,
+  onSubmit,
+}) {
+  const [localIsShortFilm, setLocalIsShortFilm] = useState(isShortFilm)
+  const [localQuery, setLocalQuery] = useState(query)
 
   useEffect(() => {
-    setShortFilmToggle(isShortFilm)
+    setLocalIsShortFilm(isShortFilm)
   }, [isShortFilm])
+
+  useEffect(() => {
+    setIsShortFilm(localIsShortFilm)
+  }, [localIsShortFilm])
 
   useEffect(() => {
     setLocalQuery(query)
   }, [query])
 
+  useEffect(() => {
+    setQuery(localQuery)
+  }, [localQuery])
+
   function onToggleClick() {
-    setShortFilmToggle(!shortFilmToggle)
-    onToggleChange(!shortFilmToggle)
+    setLocalIsShortFilm(!localIsShortFilm)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    onSubmit(localQuery, shortFilmToggle)
+    onSubmit()
   }
 
   function handleChangeQuery(e) {
@@ -49,7 +62,7 @@ function MoviesSearch({ query, isShortFilm, onToggleChange, onSubmit }) {
         <div
           onClick={onToggleClick}
           className={
-            shortFilmToggle
+            localIsShortFilm
               ? "movies-search__toggle-switch-on button-hover-effect"
               : "movies-search__toggle-switch-off button-hover-effect"
           }

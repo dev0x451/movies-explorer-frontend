@@ -3,31 +3,17 @@ import "./Register.css"
 import LogoLink from "../LogoLink/LogoLink"
 import SubmitButton from "../SubmitButton/SubmitButton"
 import FormInput from "../FormInput/FormInput"
-import { mainAPI } from "../../utils/MainApi"
-import { useState } from "react"
-import { ERRORS } from "../../utils/errors"
+import { useFormWithValidation } from "../../hooks/validate"
 
-function Register({ onSubmit }) {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [apiErrorMessage, setApiErrorMessage] = useState("")
-
-  function handleChangeName(e) {
-    setName(e.target.value)
-  }
-
-  function handleChangeEmail(e) {
-    setEmail(e.target.value)
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value)
-  }
-
+function Register({ onSubmit, apiErrorCode }) {
+  const { values, handleChange, errors, isValid } = useFormWithValidation()
   function handleSubmit(e) {
     e.preventDefault()
-    onSubmit(name, email, password)
+    onSubmit(
+      values["name-input"],
+      values["email-input"],
+      values["password-input"]
+    )
   }
 
   return (
@@ -41,31 +27,40 @@ function Register({ onSubmit }) {
               label="Имя"
               type="text"
               id="name-input"
-              placeholder="Виталий"
-              value={name}
-              onChange={handleChangeName}
+              minLength="2"
+              placeholder="не менее 2 символов"
+              pattern="[a-zA-ZА-яёЁ\-\s]*"
+              value={values["name-input"]}
+              validationMessage={errors["name-input"]}
+              onChange={handleChange}
             />
             <FormInput
               label="E-mail"
               type="email"
               id="email-input"
+              minLength="3"
               placeholder="pochta@yandex.ru"
-              value={email}
-              onChange={handleChangeEmail}
+              value={values["email-input"]}
+              validationMessage={errors["email-input"]}
+              onChange={handleChange}
             />
             <FormInput
               label="Пароль"
               type="password"
               id="password-input"
-              value={password}
-              onChange={handleChangePassword}
+              placeholder="не менее 6 символов"
+              minLength="6"
+              value={values["password-input"]}
+              validationMessage={errors["password-input"]}
+              onChange={handleChange}
             />
           </div>
 
           <div className="register__form-submit-button">
             <SubmitButton
               title="Зарегистрироваться"
-              errorMessage={apiErrorMessage}
+              isActive={isValid}
+              apiErrorCode={apiErrorCode}
             />
           </div>
         </form>

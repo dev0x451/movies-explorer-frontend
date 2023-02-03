@@ -42,6 +42,18 @@ class MainAPI {
     }).then(this._checkResponse)
   }
 
+  updateUser(name, email) {
+    return fetch(`${this._url}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      credentials: "include",
+      body: JSON.stringify({
+        email: email,
+        name: name,
+      }),
+    }).then(this._checkResponse)
+  }
+
   checkToken() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
@@ -67,18 +79,6 @@ class MainAPI {
     }).then(this._checkResponse)
   }
 
-  // country: movieInfo.country,
-  // director: movieInfo.director,
-  // duration: movieInfo.duration,
-  // year: movieInfo.year,
-  // description: movieInfo.description,
-  // image: movieInfo.image,
-  // trailerLink: movieInfo.trailerLink,
-  // nameRU: movieInfo.nameRU,
-  // nameEN: movieInfo.nameEN,
-  // thumbnail: movieInfo.thumbnail,
-  // movieId: movieInfo.movieId,
-
   deleteMovie(movieId) {
     return fetch(`${this._url}/movies/${movieId}`, {
       method: "DELETE",
@@ -94,14 +94,3 @@ export const mainAPI = new MainAPI({
     "Content-Type": "application/json",
   },
 })
-
-///////////////////////////////////////
-
-// export const auth = new Auth({
-//   url: 'https://localhost:4000',
-//   headers: {
-//     'Content-Type': 'application/json',
-//   }
-// });
-
-////////////////////////////////////

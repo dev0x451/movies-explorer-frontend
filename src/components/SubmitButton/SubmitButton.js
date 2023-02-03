@@ -1,14 +1,19 @@
-import APIErrorMessage from "../APIErrorMessage/APIErrorMessage"
+import APIResponseMessage from "../APIErrorMessage/APIResponseMessage"
 import "./SubmitButton.css"
 
-function SubmitButton({ title, onSubmit, errorMessage }) {
+function SubmitButton({ title, isActive, onSubmit, apiErrorCode }) {
   return (
     <>
-      <APIErrorMessage message={errorMessage} />
+      <APIResponseMessage apiErrorCode={apiErrorCode} />
       <button
         type="submit"
         onClick={onSubmit}
-        className="submit-button button-hover-effect"
+        className={
+          isActive
+            ? "submit-button  button-hover-effect"
+            : "submit-button submit-button-disabled"
+        }
+        disabled={!isActive}
       >
         {title}
       </button>
