@@ -1,12 +1,14 @@
 import "./Header.css"
 import LogoLink from "../LogoLink/LogoLink"
 
-function Header({ navigation, bgcolor }) {
+function Header({ children }) {
   return (
-    <header className="header-container" style={{ backgroundColor: bgcolor }}>
-      <LogoLink />
-      <nav>{navigation}</nav>
-    </header>
+    <div className="header-wrapper">
+      <header className="header-container">
+        <LogoLink />
+        {children}
+      </header>
+    </div>
   )
 }
 

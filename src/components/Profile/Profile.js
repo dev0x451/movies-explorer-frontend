@@ -32,69 +32,76 @@ function Profile({ onProfileEdit, onSignOut, apiErrorCode }) {
   }
 
   return (
-    <div className="profile">
-      <Header navigation={<NavMoviesAccount />} bgcolor="#202020" />
-      <h1 className="profile__heading">{`Привет, ${currentUser.name}!`}</h1>
-      <form className="profile__info-form" onSubmit={handleSubmit}>
-        <div className="profile__info-line profile__info-line_underlined">
-          <label className="profile__info-label" htmlFor="profile-name-input">
-            Имя
-          </label>
-          <input
-            className="profile__info-input"
-            type="text"
-            id="profile-name-input"
-            name="profile-name-input"
-            placeholder="Имя"
-            required
-            minLength="2"
-            pattern="[a-zA-ZА-яёЁ\-\s]*"
-            value={values["profile-name-input"] || ""}
-            onChange={handleChange}
-          />
-          <div className="profile-input-validation-message">
-            {errors["profile-name-input"]}
-          </div>
-        </div>
-        <div className="profile__info-line">
-          <label className="profile__info-label" htmlFor="profile-email-input">
-            E&#8209;mail
-          </label>
-          <input
-            className="profile__info-input"
-            label="E-mail"
-            type="email"
-            id="profile-email-input"
-            name="profile-email-input"
-            placeholder="pochta@yandex.ru"
-            required
-            minLength="3"
-            value={values["profile-email-input"] || ""}
-            onChange={handleChange}
-          />
-          <div className="profile-input-validation-message">
-            {errors["profile-email-input"]}
-          </div>
-        </div>
+    <div className="profile-wrapper">
+      <APIResponseMessage apiErrorCode={apiErrorCode} />
 
-        <div className="profile__edit-error">
-          <APIResponseMessage apiErrorCode={apiErrorCode} />
-        </div>
+      <div className="profile">
+        <Header>
+          <NavMoviesAccount />
+        </Header>
+        <h1 className="profile__heading">{`Привет, ${currentUser.name}!`}</h1>
+        <form className="profile__info-form" onSubmit={handleSubmit}>
+          <div className="profile__info-line profile__info-line_underlined">
+            <label className="profile__info-label" htmlFor="profile-name-input">
+              Имя
+            </label>
+            <input
+              className="profile__info-input"
+              type="text"
+              id="profile-name-input"
+              name="profile-name-input"
+              placeholder="Имя"
+              required
+              minLength="2"
+              pattern="[a-zA-ZА-яёЁ\-\s]*"
+              value={values["profile-name-input"] || ""}
+              onChange={handleChange}
+            />
+            <div className="profile-input-validation-message">
+              {errors["profile-name-input"]}
+            </div>
+          </div>
+          <div className="profile__info-line">
+            <label
+              className="profile__info-label"
+              htmlFor="profile-email-input"
+            >
+              E&#8209;mail
+            </label>
+            <input
+              className="profile__info-input"
+              label="E-mail"
+              type="email"
+              id="profile-email-input"
+              name="profile-email-input"
+              placeholder="pochta@yandex.ru"
+              required
+              minLength="3"
+              value={values["profile-email-input"] || ""}
+              onChange={handleChange}
+            />
+            <div className="profile-input-validation-message">
+              {errors["profile-email-input"]}
+            </div>
+          </div>
+
+          <div className="profile__edit-error"></div>
+          <button
+            className="profile__edit-button link-hover-effect"
+            disabled={!isProfileInfoDifferent() || !isValid}
+            type="submit"
+          >
+            Редактировать
+          </button>
+        </form>
+
         <button
-          className="profile__edit-button link-hover-effect"
-          disabled={!isProfileInfoDifferent() || !isValid}
-          type="submit"
+          className="profile__logout-link link-hover-effect"
+          onClick={onSignOut}
         >
-          Редактировать
+          Выйти из аккаунта
         </button>
-      </form>
-
-      <button
-        className="profile__logout-link link-hover-effect"
-        onClick={onSignOut}
-      >
-        Выйти из аккаунта
-      </button>
+      </div>
     </div>
   )
 }

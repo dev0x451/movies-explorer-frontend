@@ -11,6 +11,8 @@ function MoviesCard({
   savedState,
   onCardClick,
 }) {
+  const isTextOverFlown = (text) => text.length > 26
+
   function handleClick() {
     onCardClick(movieID, savedState)
   }
@@ -18,10 +20,15 @@ function MoviesCard({
   return (
     <div className="movies-card">
       <div className="movies-card__text-container">
-        <h2 className="movies-card__title">{title}</h2>
+        <div className="movies-card__title">{title}</div>
+        <p className="movies-card__title_full">{title}</p>
         <span className="movies-card__duration">{`${duration} минут`}</span>
       </div>
-      <a href={trailerLink} target="_blank">
+      <a
+        className="movies-card__poster-container"
+        href={trailerLink}
+        target="_blank"
+      >
         <img className="movies-card__poster" src={poster} alt="постер фильма" />
       </a>
       <div className="movie-save-button-container">

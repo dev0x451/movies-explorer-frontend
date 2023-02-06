@@ -3,6 +3,7 @@ import "./Register.css"
 import LogoLink from "../LogoLink/LogoLink"
 import SubmitButton from "../SubmitButton/SubmitButton"
 import FormInput from "../FormInput/FormInput"
+import APIResponseMessage from "../APIErrorMessage/APIResponseMessage"
 import { useFormWithValidation } from "../../hooks/validate"
 
 function Register({ onSubmit, apiErrorCode }) {
@@ -18,6 +19,8 @@ function Register({ onSubmit, apiErrorCode }) {
 
   return (
     <div className="register">
+      <APIResponseMessage apiErrorCode={apiErrorCode} />
+
       <div className="register__container">
         <LogoLink />
         <h1 className="register__heading">Добро пожаловать!</h1>

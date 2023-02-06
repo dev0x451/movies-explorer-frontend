@@ -3,6 +3,7 @@ import LogoLink from "../LogoLink/LogoLink"
 import FormInput from "../FormInput/FormInput"
 import SubmitButton from "../SubmitButton/SubmitButton"
 import { useFormWithValidation } from "../../hooks/validate"
+import APIResponseMessage from "../APIErrorMessage/APIResponseMessage"
 
 import "./Login.css"
 
@@ -16,6 +17,7 @@ function Login({ onSubmit, apiErrorCode }) {
 
   return (
     <div className="login">
+      <APIResponseMessage apiErrorCode={apiErrorCode} />
       <div className="login__container">
         <LogoLink />
         <h1 className="login__heading">Рады видеть!</h1>

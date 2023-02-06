@@ -47,8 +47,6 @@ function MoviesSearch({
           id="movie-search-input"
           name="movie-search-input"
           type="text"
-          minLength="2"
-          required
           placeholder="Фильм"
           value={localQuery}
           onChange={handleChangeQuery}

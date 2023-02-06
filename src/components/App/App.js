@@ -11,12 +11,14 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage"
 import Login from "../Login/Login"
 import Register from "../Register/Register"
 import Profile from "../Profile/Profile"
+import { SHORT_FILM_DURATION } from "../../utils/constants"
 
 import "./App.scss"
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(null)
+  const [movies, setMovies] = useState([])
   const [savedMovies, setSavedMovies] = useState([])
   const [apiErrorCodeLogin, setApiErrorCodeLogin] = useState(null)
   const [apiErrorCodeRegister, setApiErrorCodeRegister] = useState(null)
@@ -40,6 +42,12 @@ function App() {
         console.log("ошибка проверки токена", err)
       })
   }, [])
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getSavedMovies()
+    }
+  }, [isLoggedIn])
 
   function handleSubmitSigninForm(email, password) {
     mainAPI
@@ -94,14 +102,17 @@ function App() {
       .updateUser(name, email)
       .then((res) => {
         setCurrentUser({ id: res._id, name: res.name, email: res.email })
-        setApiErrorCodeProfile(200)
 
+        setApiErrorCodeProfile(200)
         setTimeout(() => {
           setApiErrorCodeProfile(null)
         }, 2500)
       })
       .catch((err) => {
         setApiErrorCodeProfile(err)
+        setTimeout(() => {
+          setApiErrorCodeProfile(null)
+        }, 2500)
       })
   }
 
@@ -115,6 +126,8 @@ function App() {
           email: "-",
         })
         setIsLoggedIn(false)
+        setMovies([])
+        setSavedMovies([])
         localStorage.removeItem("query")
         localStorage.removeItem("isShortFilm")
         localStorage.removeItem("movies")
@@ -136,7 +149,9 @@ function App() {
       const nameRU = movie.nameRU.toLowerCase()
       return (
         (nameRU.includes(query) && !isShortFilm) ||
-        (nameRU.includes(query) && isShortFilm && movie.duration < 40)
+        (nameRU.includes(query) &&
+          isShortFilm &&
+          movie.duration < SHORT_FILM_DURATION)
       )
     })
   }
@@ -150,6 +165,34 @@ function App() {
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  function saveMovie(movieID) {
+    const index = movies.findIndex((movie) => movie.id == movieID)
+
+    if (index !== -1) {
+      mainAPI
+        .saveMovie({
+          country: movies[index].country,
+          director: movies[index].director,
+          duration: movies[index].duration,
+          year: movies[index].year,
+          description: movies[index].description,
+          image: `https://api.nomoreparties.co${movies[index].image.url}`,
+          trailerLink: movies[index].trailerLink,
+          thumbnail: `https://api.nomoreparties.co${movies[index].image.formats.thumbnail.url}`,
+          movieId: movies[index].id,
+          nameRU: movies[index].nameRU,
+          nameEN: movies[index].nameEN,
+        })
+
+        .then((movie) => {
+          setSavedMovies([...savedMovies, movie])
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }
 
   function deleteMovie(movieID) {
@@ -180,10 +223,12 @@ function App() {
           <ProtectedRoute
             path="/movies"
             isLoggedIn={isLoggedIn}
+            movies={movies}
+            setMovies={setMovies}
             savedMovies={savedMovies}
-            getSavedMovies={getSavedMovies}
             setSavedMovies={setSavedMovies}
             deleteMovie={deleteMovie}
+            saveMovie={saveMovie}
             filterMovies={filterMovies}
             component={Movies}
           ></ProtectedRoute>
@@ -191,7 +236,6 @@ function App() {
             path="/saved-movies"
             isLoggedIn={isLoggedIn}
             savedMovies={savedMovies}
-            getSavedMovies={getSavedMovies}
             setSavedMovies={setSavedMovies}
             deleteMovie={deleteMovie}
             filterMovies={filterMovies}

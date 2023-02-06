@@ -1,5 +1,5 @@
 import "./APIResponseMessage.css"
-import { STATUS_CODES } from "../../utils/statusCodes"
+import { STATUS_CODES } from "../../utils/constants"
 
 function APIResponseMessage({ apiErrorCode }) {
   return (
@@ -10,7 +10,9 @@ function APIResponseMessage({ apiErrorCode }) {
           : "apiresponsemessage"
       }
     >
-      {STATUS_CODES[apiErrorCode] || "Произошла ошибка"}
+      <div className="apiresponsemessage-text">
+        {STATUS_CODES[apiErrorCode] || "Произошла ошибка"}
+      </div>
     </div>
   )
 }

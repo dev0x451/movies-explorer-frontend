@@ -12,10 +12,11 @@ import Footer from "../Footer/Footer"
 function Main({ isLoggedIn }) {
   return (
     <div className="main">
-      <Header
-        navigation={isLoggedIn ? <NavMoviesAccount /> : <NavLoginRegister />}
-        bgcolor="#073042"
-      />
+      <div className="main-header">
+        <Header
+          children={isLoggedIn ? <NavMoviesAccount /> : <NavLoginRegister />}
+        />
+      </div>
       <main>
         <Promo />
         <AboutProject />

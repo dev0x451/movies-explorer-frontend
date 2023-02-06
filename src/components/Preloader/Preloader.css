@@ -40,14 +40,10 @@
 }
 
 .preloader {
-  position: absolute;
-  left: 0;
-  top: 0;
   display: none;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
   z-index: 10;
   padding: 20px;
 }
@@ -57,14 +53,14 @@
 }
 
 .preloader__container {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   position: relative;
 }
 
 .preloader__round {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   position: absolute;
   top: 0;
   left: 0;
@@ -75,8 +71,8 @@
 .preloader__round::after,
 .preloader__round::before {
   content: "";
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   position: absolute;
   top: 0;
   left: 0;
