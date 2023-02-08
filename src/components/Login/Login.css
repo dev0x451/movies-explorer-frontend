@@ -1,6 +1,5 @@
 .login {
   margin: 0 auto;
-  max-width: 1280px;
   width: 100%;
   height: 100vh;
   min-height: 700px;
@@ -53,7 +52,7 @@
 .login__form {
   margin: 41px 0 0;
   padding: 0;
-  position: relative;
+  /* position: relative; */
 }
 
 @media screen and (max-width: 470px) {

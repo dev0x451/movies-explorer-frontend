@@ -1,6 +1,16 @@
 import "./FormInput.css"
 
-function FormInput({ label, type, id, placeholder }) {
+function FormInput({
+  label,
+  type,
+  id,
+  placeholder,
+  minLength,
+  pattern,
+  value,
+  validationMessage,
+  onChange,
+}) {
   return (
     <div className="forminput">
       <label className="forminput__label" htmlFor={id}>
@@ -12,11 +22,14 @@ function FormInput({ label, type, id, placeholder }) {
         id={id}
         name={id}
         placeholder={placeholder}
-        minLength="2"
-        maxLength="30"
+        minLength={minLength}
+        maxLength="40"
+        pattern={pattern}
         required
+        value={value || ""}
+        onChange={onChange}
       ></input>
-      <div className="form-input-validation-message">Ошибка валидации</div>
+      <div className="form-input-validation-message">{validationMessage}</div>
     </div>
   )
 }

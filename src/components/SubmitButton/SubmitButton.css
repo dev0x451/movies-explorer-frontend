@@ -17,3 +17,9 @@
     line-height: 15px;
   }
 }
+
+.submit-button-disabled {
+  background: #7caaf3;
+  opacity: 0.7;
+  cursor: auto;
+}

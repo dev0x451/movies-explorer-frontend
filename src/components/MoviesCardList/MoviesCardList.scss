@@ -1,3 +1,5 @@
+@use "../../global";
+
 .movies-card-list {
   margin: 22px auto 0;
   width: 100%;
@@ -10,16 +12,8 @@
   row-gap: 32px;
 }
 
-/* @media screen and (max-width: 980px) {
+@media screen and (max-width: global.$desktop-breakpoint) {
   .movies-card-list {
-    margin: 33px auto 0;
-    padding: 0 30px;
-  }
-} */
-
-@media screen and (max-width: 980px) {
-  .movies-card-list {
-    max-width: 768px;
     grid-template-columns: 1fr 1fr;
     column-gap: 24px;
     row-gap: 35px;
@@ -28,7 +22,7 @@
   }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: global.$mobile-breakpoint) {
   .movies-card-list {
     grid-template-columns: 1fr;
     row-gap: 16px;

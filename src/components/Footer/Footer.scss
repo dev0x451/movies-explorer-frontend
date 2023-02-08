@@ -1,9 +1,14 @@
 @use "../../global";
 
-.footer {
-  margin: 0;
-  width: 100%;
+.footer-wrapper {
   background-color: #202020;
+  width: 100%;
+}
+
+.footer {
+  max-width: 1280px;
+  margin: 0 auto 0;
+  width: 100%;
   padding: 79px 70px 0;
   min-height: 172px;
 }
