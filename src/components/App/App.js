@@ -141,7 +141,7 @@ function App() {
   }
 
   function findMovieMatch(id) {
-    return savedMovies.findIndex((movie) => movie.movieId == id)
+    return savedMovies.findIndex((movie) => movie.movieId === id)
   }
 
   function filterMovies(movies, query, isShortFilm) {
@@ -168,7 +168,7 @@ function App() {
   }
 
   function saveMovie(movieID) {
-    const index = movies.findIndex((movie) => movie.id == movieID)
+    const index = movies.findIndex((movie) => movie.id === movieID)
 
     if (index !== -1) {
       mainAPI
@@ -197,7 +197,7 @@ function App() {
 
   function deleteMovie(movieID) {
     const index = findMovieMatch(movieID)
-    if (index != -1) {
+    if (index !== -1) {
       mainAPI.deleteMovie(savedMovies[index]._id).then((res) => {
         const tmpArr = [...savedMovies]
         tmpArr.splice(index, 1)
@@ -219,7 +219,7 @@ function App() {
             apiErrorCode={apiErrorCodeProfile}
             onSignOut={handleSignOut}
             component={Profile}
-          ></ProtectedRoute>
+          />
           <ProtectedRoute
             path="/movies"
             isLoggedIn={isLoggedIn}
@@ -231,7 +231,7 @@ function App() {
             saveMovie={saveMovie}
             filterMovies={filterMovies}
             component={Movies}
-          ></ProtectedRoute>
+          />
           <ProtectedRoute
             path="/saved-movies"
             isLoggedIn={isLoggedIn}
@@ -240,7 +240,7 @@ function App() {
             deleteMovie={deleteMovie}
             filterMovies={filterMovies}
             component={SavedMovies}
-          ></ProtectedRoute>
+          />
           <Route path="/signin">
             {isLoggedIn ? (
               <Redirect to="/" />

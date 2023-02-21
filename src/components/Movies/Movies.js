@@ -7,7 +7,8 @@ import MoviesCard from "../MoviesCard/MoviesCard"
 import Footer from "../Footer/Footer"
 import Preloader from "../Preloader/Preloader"
 import { useState, useEffect } from "react"
-import { useWindowSize } from "../../hooks/useWindowSize"
+// import * as RUACT from "react"
+import { useWindowWidth } from "../../hooks/useWindowWidth"
 import { moviesAPI } from "../../utils/MoviesApi"
 import APIResponseMessage from "../APIErrorMessage/APIResponseMessage"
 import {
@@ -30,7 +31,7 @@ function Movies({
   const [displayedMoviesIndex, setDisplayedMoviesIndex] = useState(0)
   const [loadMore, setLoadMore] = useState(false)
   const [moviesDisplayState, setMoviesDisplayState] = useState("unloaded")
-  const [clientWidth, clientHeight] = useWindowSize()
+  const clientWidth = useWindowWidth()
   const [apiErrorCode, setApiErrorCode] = useState(null)
 
   useEffect(() => {
@@ -171,7 +172,7 @@ function Movies({
   }
 
   function findMovieMatch(id) {
-    return savedMovies.findIndex((movie) => movie.movieId == id)
+    return savedMovies.findIndex((movie) => movie.movieId === id)
   }
 
   return (
@@ -209,7 +210,7 @@ function Movies({
                       }
                       trailerLink={movie.trailerLink}
                       savedState={
-                        findMovieMatch(movie.id) != -1 ? "saved" : "save"
+                        findMovieMatch(movie.id) !== -1 ? "saved" : "save"
                       }
                       onCardClick={handleMovieCardClick}
                     />

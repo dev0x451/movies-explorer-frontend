@@ -1,5 +1,6 @@
 import "./HeadLine.css"
 
+
 function HeadLine({ text }) {
   return (
     <div className="headline">

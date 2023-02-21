@@ -164,6 +164,7 @@
   height: 327px;
   border-radius: 10px;
   order: 3;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 980px) {

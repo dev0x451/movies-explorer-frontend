@@ -88,7 +88,9 @@
   align-items: center;
   width: 100%;
   aspect-ratio: 18 / 10;
+  background-color: antiquewhite;
 }
+
 @media screen and (max-width: 520px) {
   .movies-card__poster-container {
     margin: 15px 0 0 0;

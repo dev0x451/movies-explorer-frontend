@@ -10,20 +10,41 @@
 
 .apiresponsemessage {
   position: fixed;
+  right: 32px;
+  top: 32px;
   z-index: 5;
   display: none;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: max-content;
+  max-width: 300px;
   height: 30px;
-  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #3ffeee;
+}
+
+.apiresponsemessage-close-icon {
+  display: none;
+  background-image: url('../../images/apimessage-close-button.svg');
+  background-size: contain;
+  right: 10px;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  position: fixed;
+  z-index: 5;
+}
+
+.apiresponsemessage-close-icon_visible {
+  display: block;
 }
 
 .apiresponsemessage-text {
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
-  color: #000;
+  color: #fff;
 }
 
 .apiresponsemessage_visible {

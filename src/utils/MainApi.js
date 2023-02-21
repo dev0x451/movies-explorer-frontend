@@ -89,7 +89,7 @@ class MainAPI {
 }
 
 export const mainAPI = new MainAPI({
-  url: "https://api.movies001.nomoredomains.club",
+  url: "https://movies.schapov.dev/api",
   headers: {
     "Content-Type": "application/json",
   },
