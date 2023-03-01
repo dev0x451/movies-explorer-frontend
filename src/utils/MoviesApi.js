@@ -1,3 +1,4 @@
+import { MOVIES_DB_URL } from '../utils/constants'
 class MoviesAPI {
   constructor({ url, headers }) {
     this._url = url
@@ -19,6 +20,6 @@ class MoviesAPI {
 }
 
 export const moviesAPI = new MoviesAPI({
-  url: "https://api.nomoreparties.co",
+  url: MOVIES_DB_URL,
   headers: {},
 })

@@ -1,3 +1,5 @@
+export const MOVIES_DB_URL = 'https://api.nomoreparties.co'
+export const MAIN_API_URL = 'https://movies.schapov.dev/api'
 export const STATUS_CODES = {
   400: "Переданы некорректные данные",
   401: "Вы ввели неправильный логин или пароль",

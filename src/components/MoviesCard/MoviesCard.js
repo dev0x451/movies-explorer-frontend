@@ -11,7 +11,6 @@ function MoviesCard({
   savedState,
   onCardClick,
 }) {
-  const isTextOverFlown = (text) => text.length > 26
 
   function handleClick() {
     onCardClick(movieID, savedState)
@@ -27,7 +26,7 @@ function MoviesCard({
       <a
         className="movies-card__poster-container"
         href={trailerLink}
-        target="_blank"
+        target="_blank" rel="noreferrer"
       >
         <img className="movies-card__poster" src={poster} alt="постер фильма" />
       </a>

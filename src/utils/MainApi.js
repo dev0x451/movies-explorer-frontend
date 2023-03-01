@@ -1,3 +1,4 @@
+import { MAIN_API_URL } from '../utils/constants'
 class MainAPI {
   constructor({ url, headers }) {
     this._url = url
@@ -89,7 +90,7 @@ class MainAPI {
 }
 
 export const mainAPI = new MainAPI({
-  url: "https://movies.schapov.dev/api",
+  url: MAIN_API_URL,
   headers: {
     "Content-Type": "application/json",
   },

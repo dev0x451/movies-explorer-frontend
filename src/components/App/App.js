@@ -11,7 +11,7 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage"
 import Login from "../Login/Login"
 import Register from "../Register/Register"
 import Profile from "../Profile/Profile"
-import { SHORT_FILM_DURATION } from "../../utils/constants"
+import { SHORT_FILM_DURATION, MOVIES_DB_URL } from "../../utils/constants"
 
 import "./App.scss"
 
@@ -141,7 +141,7 @@ function App() {
   }
 
   function findMovieMatch(id) {
-    return savedMovies.findIndex((movie) => movie.movieId === id)
+    return savedMovies.findIndex((movie) => movie.movieId == id)
   }
 
   function filterMovies(movies, query, isShortFilm) {
@@ -168,9 +168,11 @@ function App() {
   }
 
   function saveMovie(movieID) {
-    const index = movies.findIndex((movie) => movie.id === movieID)
+    console.log(movieID);
+    const index = movies.findIndex((movie) => movie.id == movieID)
+    console.log(index);
 
-    if (index !== -1) {
+    if (index != -1) {
       mainAPI
         .saveMovie({
           country: movies[index].country,
@@ -178,9 +180,9 @@ function App() {
           duration: movies[index].duration,
           year: movies[index].year,
           description: movies[index].description,
-          image: `https://api.nomoreparties.co${movies[index].image.url}`,
+          image: `${MOVIES_DB_URL}${movies[index].image.url}`,
           trailerLink: movies[index].trailerLink,
-          thumbnail: `https://api.nomoreparties.co${movies[index].image.formats.thumbnail.url}`,
+          thumbnail: `${MOVIES_DB_URL}${movies[index].image.formats.thumbnail.url}`,
           movieId: movies[index].id,
           nameRU: movies[index].nameRU,
           nameEN: movies[index].nameEN,
@@ -197,7 +199,7 @@ function App() {
 
   function deleteMovie(movieID) {
     const index = findMovieMatch(movieID)
-    if (index !== -1) {
+    if (index != -1) {
       mainAPI.deleteMovie(savedMovies[index]._id).then((res) => {
         const tmpArr = [...savedMovies]
         tmpArr.splice(index, 1)
