@@ -1,6 +1,6 @@
 # Сервис "Movies Explorer"
 
-![Скриншот сайта](https://github.com/dev0x451/movies-explorer-frontend/blob/main/images/site-screenshot1.jpg) ![Скриншот сайта](https://github.com/dev0x451/movies-explorer-frontend/blob/main/images/site-screenshot2.jpg)
+![Скриншот сайта](https://github.com/dev0x451/movies-explorer-frontend/blob/main/src/images/site-screenshot1.jpg) ![Скриншот сайта](https://github.com/dev0x451/movies-explorer-frontend/blob/main/src/images/site-screenshot2.jpg)
 
 “Movies Explorer” - это дипломный проект на курсе "Frontend-разработчик" в Яндекс.Практикум. В этом сервисе можно искать фильмы по запросу и сохранять их в личном кабинете. Проект вобрал в себя всё, что я изучил за 9 месяцев - самостоятельно создан backend и API для сохранения фильмов и регистрации пользователей, реализован адаптивный интерфейс на React, сделан деплой на сервер.
 
